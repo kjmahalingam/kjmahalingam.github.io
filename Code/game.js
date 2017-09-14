@@ -1,5 +1,5 @@
 // Initialize game
-game = new Phaser.Game(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio, Phaser.AUTO, '');
+game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.CANVAS, '');
 
 // Add game states
 game.state.add('boot', bootState);
