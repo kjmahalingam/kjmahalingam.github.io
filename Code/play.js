@@ -2,7 +2,7 @@
 var playState = {
   // Automatically called
   preload: function() {
-    // Set up key input
+    // Set up input
     ready = true;
     upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
     upKey.onDown.add(moveNorth, this);
@@ -14,10 +14,18 @@ var playState = {
     rightKey.onDown.add(moveEast, this);
     resetKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     resetKey.onDown.add(resetProcess, this);
+    startX = 0;
+    startY = 0;
+    endX = 0;
+    endY = 0;
+    game.input.onDown.add(startSwipe, this);
   },
   // Automatically called
   create: function() {
     loadLevel();
+    var minDimension = Math.min(game.width, game.height);
+    button = game.add.button(minDimension * 0.025, minDimension * 0.025, 'Reset', resetProcess, this);
+    button.width = button.height = minDimension * 0.05;
   },
   // Called every frame
   update: function() {
@@ -366,4 +374,37 @@ function resetProcess() {
 
 function setReady() {
   ready = true;
+}
+
+function startSwipe() {
+  startX = game.input.worldX;
+  startY = game.input.worldY;
+  game.input.onDown.remove(startSwipe);
+  game.input.onUp.add(endSwipe);
+}
+
+function endSwipe() {
+  endX = game.input.worldX;
+  endY = game.input.worldY;
+  var distX = endX - startX;
+  var distY = endY - startY;
+
+  if (Math.abs(distX) > (Math.abs(distY) * 2) && Math.abs(distX) > (game.width / 10)) {
+    if (distX > 0) {
+      moveEast();
+    } else {
+      moveWest();
+    }
+  }
+
+  if (Math.abs(distY) > (Math.abs(distX) * 2) && Math.abs(distY) > (game.height / 10)) {
+    if (distY > 0) {
+      moveSouth();
+    } else {
+      moveNorth();
+    }
+  }
+
+  game.input.onDown.add(startSwipe);
+  game.input.onUp.remove(endSwipe);
 }
