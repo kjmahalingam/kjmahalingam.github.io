@@ -315,6 +315,28 @@ itemList = [
   item19,
   item20
 ];
+completionList = [
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false
+];
 replicaList = [];
 goalList = [];
 zapOnList = [];
@@ -325,8 +347,8 @@ function loadLevel() {
   // Scale and draw grid
   var cols = floorList[levelIndex][0].length;
   var rows = floorList[levelIndex].length;
-  var tileWidth = game.width * 0.9 / cols;
-  var tileHeight = game.height * 0.9 / rows;
+  var tileWidth = game.width * 0.85 / cols;
+  var tileHeight = game.height * 0.85 / rows;
   tileWidth = tileHeight = Math.min(tileWidth, tileHeight);
   for (var i = 0; i < cols; i++) {
     for (var j = 0; j < rows; j++) {
@@ -371,7 +393,13 @@ function loadLevel() {
   }
 }
 function nextLevel() {
-  levelIndex = (levelIndex + 1) % floorList.length;
+  levelIndex = (levelIndex + 1) % completionList.length;
+}
+function previousLevel() {
+  levelIndex = levelIndex - 1;
+  if (levelIndex < 0) {
+    levelIndex = completionList.length - 1;
+  }
 }
 function resetLevel() {
   replicaList = [];

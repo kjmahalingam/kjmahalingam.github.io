@@ -20,6 +20,8 @@ var loadState = {
     game.load.image('FloorNESW', 'Sprites/FloorNESW.png');
     game.load.image('Wall', 'Sprites/Wall.png');
     game.load.image('Reset', 'Sprites/Reset.png');
+    game.load.image('Next', 'Sprites/Next.png');
+    game.load.image('Previous', 'Sprites/Previous.png');
 
     // Load object images
     game.load.image('Blue', 'Sprites/Blue.png');

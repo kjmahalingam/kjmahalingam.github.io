@@ -12,8 +12,8 @@ var playState = {
     leftKey.onDown.add(moveWest, this);
     rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
     rightKey.onDown.add(moveEast, this);
-    resetKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    resetKey.onDown.add(resetProcess, this);
+    spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    spaceKey.onDown.add(spaceProcess, this);
     startX = 0;
     startY = 0;
     endX = 0;
@@ -23,9 +23,16 @@ var playState = {
   // Automatically called
   create: function() {
     loadLevel();
-    var minDimension = Math.min(game.width, game.height);
-    button = game.add.button(minDimension * 0.025, minDimension * 0.025, 'Reset', resetProcess, this);
-    button.width = button.height = minDimension * 0.05;
+    minDimension = Math.min(game.width, game.height);
+    resetButton = game.add.button(game.width * 0.5, game.height * 0.95, 'Reset', resetProcess, this);
+    resetButton.anchor.setTo(0.5, 0.5);
+    resetButton.width = resetButton.height = minDimension * 0.05;
+    nextButton = game.add.button(game.width * 0.9, game.height * 0.95, 'Next', nextProcess, this);
+    nextButton.anchor.setTo(0.5, 0.5);
+    nextButton.width = nextButton.height = minDimension * 0.05;
+    previousButton = game.add.button(game.width * 0.1, game.height * 0.95, 'Previous', previousProcess, this);
+    previousButton.anchor.setTo(0.5, 0.5);
+    previousButton.width = previousButton.height = minDimension * 0.05;
   },
   // Called every frame
   update: function() {
@@ -364,12 +371,34 @@ function teleport(rList, pList, m, n) {
   }, 300);
 }
 
+function spaceProcess() {
+  if (goalList.length <= 0) {
+    nextProcess();
+  } else {
+    resetProcess();
+  }
+}
+
 function resetProcess() {
   setReady();
-  if (goalList.length <= 0) {
-    nextLevel();
-  }
   resetLevel();
+}
+
+function nextProcess() {
+  if ((goalList.length <= 0) || completionList[levelIndex]) {
+    completionList[levelIndex] = true;
+    setReady();
+    nextLevel();
+    resetLevel();
+  }
+}
+
+function previousProcess() {
+  if (levelIndex > 0) {
+    setReady();
+    previousLevel();
+    resetLevel();
+  }
 }
 
 function setReady() {
