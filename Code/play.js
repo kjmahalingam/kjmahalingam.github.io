@@ -23,6 +23,7 @@ var playState = {
   // Automatically called
   create: function() {
     loadLevel();
+    this.camera.flash('#646464', 500, true);
     minDimension = Math.min(game.width, game.height);
     resetButton = game.add.button(game.width * 0.5, game.height * 0.95, 'Reset', resetProcess, this);
     resetButton.anchor.setTo(0.5, 0.5);
@@ -90,11 +91,10 @@ function moveNorth() {
                   // Create new zapOn and remove zapOff
                   var zapOn = new Item(zapOffList[j].x, zapOffList[j].y, zapOffList[j].col, zapOffList[j].row, zapOffList[j].width, zapOffList[j].height, 'Z');
                   zapOnList.push(zapOn);
+                  zapOn.show();
+                  game.add.tween(zapOn.sprite).from({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
                   game.add.tween(zapOffList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
                   zapOffList.splice(j, 1);
-                  setTimeout(function() {
-                    zapOn.show();
-                  }, 300);
                   break;
                 }
               }
@@ -169,11 +169,10 @@ function moveSouth() {
                   // Create new zapOn and remove zapOff
                   var zapOn = new Item(zapOffList[j].x, zapOffList[j].y, zapOffList[j].col, zapOffList[j].row, zapOffList[j].width, zapOffList[j].height, 'Z');
                   zapOnList.push(zapOn);
+                  zapOn.show();
+                  game.add.tween(zapOn.sprite).from({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
                   game.add.tween(zapOffList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
                   zapOffList.splice(j, 1);
-                  setTimeout(function() {
-                    zapOn.show();
-                  }, 300);
                   break;
                 }
               }
@@ -248,11 +247,10 @@ function moveWest() {
                   // Create new zapOn and remove zapOff
                   var zapOn = new Item(zapOffList[j].x, zapOffList[j].y, zapOffList[j].col, zapOffList[j].row, zapOffList[j].width, zapOffList[j].height, 'Z');
                   zapOnList.push(zapOn);
+                  zapOn.show();
+                  game.add.tween(zapOn.sprite).from({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
                   game.add.tween(zapOffList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
                   zapOffList.splice(j, 1);
-                  setTimeout(function() {
-                    zapOn.show();
-                  }, 300);
                   break;
                 }
               }
@@ -326,11 +324,11 @@ function moveEast() {
                 if ((zapOffList[j].row === replicaList[i].row) && (zapOffList[j].col === replicaList[i].col)) {
                   // Create new zapOn and remove zapOff
                   var zapOn = new Item(zapOffList[j].x, zapOffList[j].y, zapOffList[j].col, zapOffList[j].row, zapOffList[j].width, zapOffList[j].height, 'Z');
-                  console.info(zapOn);
                   zapOnList.push(zapOn);
+                  zapOn.show();
+                  game.add.tween(zapOn.sprite).from({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
                   game.add.tween(zapOffList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
                   zapOffList.splice(j, 1);
-                  zapOn.show();
                   break;
                 }
               }
@@ -380,24 +378,37 @@ function spaceProcess() {
 }
 
 function resetProcess() {
-  setReady();
-  resetLevel();
+  if (goalList.length <= 0) {
+    completionList[levelIndex] = true;
+  }
+  playState.camera.fade('#646464', 500, true);
+  setTimeout(function() {
+    setReady();
+    resetLevel();
+  }, 500);
 }
 
 function nextProcess() {
   if ((goalList.length <= 0) || completionList[levelIndex]) {
-    completionList[levelIndex] = true;
-    setReady();
-    nextLevel();
-    resetLevel();
+    playState.camera.fade('#646464', 500, true);
+    setTimeout(function() {
+      completionList[levelIndex] = true;
+      setReady();
+      nextLevel();
+      resetLevel();
+    }, 500);
   }
 }
 
 function previousProcess() {
   if (levelIndex > 0) {
-    setReady();
-    previousLevel();
-    resetLevel();
+    playState.camera.fade('#646464', 500, true);
+    setTimeout(function() {
+      setReady();
+      previousLevel();
+      resetLevel();
+    }, 500);
+
   }
 }
 

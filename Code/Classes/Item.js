@@ -25,8 +25,6 @@ function Item(x_, y_, col_, row_, width_, height_, type_) {
     this.sprite.anchor.setTo(0.5, 0.5);
     this.sprite.width = this.width;
     this.sprite.height = this.height;
-    this.sprite.alpha = 1;
-    game.add.tween(this.sprite).from({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
   }
 
   // Move replica item
