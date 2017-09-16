@@ -4,6 +4,7 @@ var playState = {
   preload: function() {
     // Set up input
     ready = true;
+    loaded = false;
     upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
     upKey.onDown.add(moveNorth, this);
     downKey = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
@@ -34,6 +35,7 @@ var playState = {
     previousButton = game.add.button(game.width * 0.1, game.height * 0.95, 'Previous', previousProcess, this);
     previousButton.anchor.setTo(0.5, 0.5);
     previousButton.width = previousButton.height = minDimension * 0.05;
+    setTimeout(setLoaded, 500);
   },
   // Called every frame
   update: function() {
@@ -378,42 +380,54 @@ function spaceProcess() {
 }
 
 function resetProcess() {
-  if (goalList.length <= 0) {
-    completionList[levelIndex] = true;
+  if (loaded) {
+    if (goalList.length <= 0) {
+      loaded = false;
+      completionList[levelIndex] = true;
+    }
+    playState.camera.fade('#646464', 500, true);
+    setTimeout(function() {
+      setReady();
+      resetLevel();
+    }, 500);
   }
-  playState.camera.fade('#646464', 500, true);
-  setTimeout(function() {
-    setReady();
-    resetLevel();
-  }, 500);
 }
 
 function nextProcess() {
-  if ((goalList.length <= 0) || completionList[levelIndex]) {
-    playState.camera.fade('#646464', 500, true);
-    setTimeout(function() {
-      completionList[levelIndex] = true;
-      setReady();
-      nextLevel();
-      resetLevel();
-    }, 500);
+  if (loaded) {
+    if ((goalList.length <= 0) || completionList[levelIndex]) {
+      loaded = false;
+      playState.camera.fade('#646464', 500, true);
+      setTimeout(function() {
+        completionList[levelIndex] = true;
+        setReady();
+        nextLevel();
+        resetLevel();
+      }, 500);
+    }
   }
 }
 
 function previousProcess() {
-  if (levelIndex > 0) {
-    playState.camera.fade('#646464', 500, true);
-    setTimeout(function() {
-      setReady();
-      previousLevel();
-      resetLevel();
-    }, 500);
-
+  if (loaded) {
+    if (levelIndex > 0) {
+      loaded = false;
+      playState.camera.fade('#646464', 500, true);
+      setTimeout(function() {
+        setReady();
+        previousLevel();
+        resetLevel();
+      }, 500);
+    }
   }
 }
 
 function setReady() {
   ready = true;
+}
+
+function setLoaded() {
+  loaded = true;
 }
 
 function startSwipe() {
