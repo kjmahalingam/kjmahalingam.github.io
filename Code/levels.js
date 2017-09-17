@@ -347,13 +347,23 @@ function loadLevel() {
   // Scale and draw grid
   var cols = floorList[levelIndex][0].length;
   var rows = floorList[levelIndex].length;
-  var tileWidth = game.width * 0.85 / cols;
-  var tileHeight = game.height * 0.85 / rows;
+  if (landscape) {
+    var tileWidth = game.width * 0.8 / cols;
+    var tileHeight = game.height * 0.8 / rows;
+  } else {
+    var tileWidth = game.width * 0.8 / rows;
+    var tileHeight = game.height * 0.8 / cols;
+  }
   tileWidth = tileHeight = Math.min(tileWidth, tileHeight);
   for (var i = 0; i < cols; i++) {
     for (var j = 0; j < rows; j++) {
-      var xpos = (game.width / 2) + (((i + 0.5) - (cols / 2)) * tileWidth);
-      var ypos = (game.height / 2) + (((j + 0.5) - (rows / 2)) * tileHeight);
+      if (landscape) {
+        var xpos = (game.width / 2) + (((i + 0.5) - (cols / 2)) * tileWidth);
+        var ypos = (game.height / 2) + (((j + 0.5) - (rows / 2)) * tileHeight);
+      } else {
+        var xpos = (game.width / 2) - (((j + 0.5) - (rows / 2)) * tileHeight);
+        var ypos = (game.height / 2) + (((i + 0.5) - (cols / 2)) * tileWidth);
+      }
       var floor = new Floor(xpos, ypos, i, j, tileWidth, tileHeight, floorList[levelIndex][j][i]);
       floor.show();
       if (itemList[levelIndex][j][i] !== '') {

@@ -32,31 +32,51 @@ function Item(x_, y_, col_, row_, width_, height_, type_) {
     if (['B', 'O', 'G', 'P'].includes(this.type)) {
       switch (dir) {
         case "N":
-          this.y -= this.height;
           this.row--;
           game.add.tween(this.sprite).to({width: this.width / 4, height: this.height / 4}, 100, Phaser.Easing.Linear.None, true);
-          game.add.tween(this.sprite).to({y: this.sprite.y - this.height}, 100, Phaser.Easing.Linear.None, true, 100);
+          if (landscape) {
+            this.y -= this.height;
+            game.add.tween(this.sprite).to({y: this.sprite.y - this.height}, 100, Phaser.Easing.Linear.None, true, 100);
+          } else {
+            this.x += this.width;
+            game.add.tween(this.sprite).to({x: this.sprite.x + this.width}, 100, Phaser.Easing.Linear.None, true, 100);
+          }
           game.add.tween(this.sprite).to({width: this.width, height: this.height}, 100, Phaser.Easing.Linear.None, true, 200);
           break;
         case "E":
-          this.x += this.width;
           this.col++;
           game.add.tween(this.sprite).to({width: this.width / 4, height: this.height / 4}, 100, Phaser.Easing.Linear.None, true);
-          game.add.tween(this.sprite).to({x: this.sprite.x + this.width}, 100, Phaser.Easing.Linear.None, true, 100);
+          if (landscape) {
+            this.x += this.width;
+            game.add.tween(this.sprite).to({x: this.sprite.x + this.width}, 100, Phaser.Easing.Linear.None, true, 100);
+          } else {
+            this.y += this.height;
+            game.add.tween(this.sprite).to({y: this.sprite.y + this.height}, 100, Phaser.Easing.Linear.None, true, 100);
+          }
           game.add.tween(this.sprite).to({width: this.width, height: this.height}, 100, Phaser.Easing.Linear.None, true, 200);
           break;
         case "S":
-          this.y += this.height;
           this.row++;
           game.add.tween(this.sprite).to({width: this.width / 4, height: this.height / 4}, 100, Phaser.Easing.Linear.None, true);
-          game.add.tween(this.sprite).to({y: this.sprite.y + this.height}, 100, Phaser.Easing.Linear.None, true, 100);
+          if (landscape) {
+            this.y += this.height;
+            game.add.tween(this.sprite).to({y: this.sprite.y + this.height}, 100, Phaser.Easing.Linear.None, true, 100);
+          } else {
+            this.x -= this.width;
+            game.add.tween(this.sprite).to({x: this.sprite.x - this.width}, 100, Phaser.Easing.Linear.None, true, 100);
+          }
           game.add.tween(this.sprite).to({width: this.width, height: this.height}, 100, Phaser.Easing.Linear.None, true, 200);
           break;
         case "W":
-          this.x -= this.width;
           this.col--;
           game.add.tween(this.sprite).to({width: this.width / 4, height: this.height / 4}, 100, Phaser.Easing.Linear.None, true);
-          game.add.tween(this.sprite).to({x: this.sprite.x - this.width}, 100, Phaser.Easing.Linear.None, true, 100);
+          if (landscape) {
+            this.x -= this.width;
+            game.add.tween(this.sprite).to({x: this.sprite.x - this.width}, 100, Phaser.Easing.Linear.None, true, 100);
+          } else {
+            this.y -= this.height;
+            game.add.tween(this.sprite).to({y: this.sprite.y - this.height}, 100, Phaser.Easing.Linear.None, true, 100);
+          }
           game.add.tween(this.sprite).to({width: this.width, height: this.height}, 100, Phaser.Easing.Linear.None, true, 200);
           break;
         default:

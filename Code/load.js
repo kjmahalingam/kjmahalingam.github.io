@@ -32,10 +32,21 @@ var loadState = {
     game.load.image('Portal', 'Sprites/Portal.png');
     game.load.image('ZapOn', 'Sprites/ZapOn.png');
     game.load.image('ZapOff', 'Sprites/ZapOff.png');
+
+    // Load audio
+    game.load.audio('Replica', 'Audio/Replica.mp3');
+    game.load.audio('Goal', 'Audio/Goal.mp3');
+    game.load.audio('Win', 'Audio/Win.mp3');
+    game.load.audio('Zap', 'Audio/Zap.mp3');
+    game.load.audio('Portal', 'Audio/Portal.mp3');
   },
 
   // Automatically called
   create: function() {
+    // Play background music
+    music = game.add.audio('Replica');
+    music.loop = true;
+    music.play();
     // Start menu state
     game.state.start('menu');
   }

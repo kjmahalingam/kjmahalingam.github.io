@@ -37,5 +37,8 @@ function Floor(x_, y_, col_, row_, width_, height_, type_) {
     this.sprite.anchor.setTo(0.5, 0.5);
     this.sprite.width = this.width + 1;
     this.sprite.height = this.height + 1;
+    if (!landscape) {
+      this.sprite.angle = 90;
+    }
   }
 }

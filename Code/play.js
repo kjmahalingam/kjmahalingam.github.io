@@ -6,14 +6,21 @@ var playState = {
     ready = true;
     loaded = false;
     upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
-    upKey.onDown.add(moveNorth, this);
     downKey = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
-    downKey.onDown.add(moveSouth, this);
     leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
-    leftKey.onDown.add(moveWest, this);
     rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
-    rightKey.onDown.add(moveEast, this);
     spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    if (landscape) {
+      upKey.onDown.add(moveNorth, this);
+      downKey.onDown.add(moveSouth, this);
+      leftKey.onDown.add(moveWest, this);
+      rightKey.onDown.add(moveEast, this);
+    } else {
+      upKey.onDown.add(moveWest, this);
+      downKey.onDown.add(moveEast, this);
+      leftKey.onDown.add(moveSouth, this);
+      rightKey.onDown.add(moveNorth, this);
+    }
     spaceKey.onDown.add(spaceProcess, this);
     startX = 0;
     startY = 0;
@@ -26,15 +33,19 @@ var playState = {
     loadLevel();
     this.camera.flash('#646464', 500, true);
     minDimension = Math.min(game.width, game.height);
-    resetButton = game.add.button(game.width * 0.5, game.height * 0.95, 'Reset', resetProcess, this);
+    resetButton = game.add.button(game.width * 0.5, game.height * 0.925, 'Reset', resetProcess, this);
     resetButton.anchor.setTo(0.5, 0.5);
-    resetButton.width = resetButton.height = minDimension * 0.05;
-    nextButton = game.add.button(game.width * 0.9, game.height * 0.95, 'Next', nextProcess, this);
+    resetButton.width = resetButton.height = minDimension * 0.075;
+    nextButton = game.add.button(game.width * 0.9, game.height * 0.925, 'Next', nextProcess, this);
     nextButton.anchor.setTo(0.5, 0.5);
-    nextButton.width = nextButton.height = minDimension * 0.05;
-    previousButton = game.add.button(game.width * 0.1, game.height * 0.95, 'Previous', previousProcess, this);
+    nextButton.width = nextButton.height = minDimension * 0.075;
+    previousButton = game.add.button(game.width * 0.1, game.height * 0.925, 'Previous', previousProcess, this);
     previousButton.anchor.setTo(0.5, 0.5);
-    previousButton.width = previousButton.height = minDimension * 0.05;
+    previousButton.width = previousButton.height = minDimension * 0.075;
+    winSound = game.add.audio("Win");
+    goalSound = game.add.audio("Goal");
+    zapSound = game.add.audio("Zap");
+    portalSound = game.add.audio("Portal");
     setTimeout(setLoaded, 500);
   },
   // Called every frame
@@ -75,6 +86,9 @@ function moveNorth() {
                   game.add.tween(replicaList[i].sprite).to({alpha: 0.5}, 500, Phaser.Easing.Linear.None, true, 300);
                   game.add.tween(replicaList[i].sprite).to({width: 0, height: 0}, 500, Phaser.Easing.Exponential.In, true, 800);
                   replicaList.splice(i, 1);
+                  setTimeout(function() {
+                    zapSound.play();
+                  }, 300);
                   break;
                 }
               }
@@ -83,6 +97,9 @@ function moveNorth() {
               for (j = portalList.length - 1; j >= 0; j--) {
                 if ((portalList[j].row === replicaList[i].row) && (portalList[j].col === replicaList[i].col)) {
                   teleport(replicaList, portalList, i, j);
+                  setTimeout(function() {
+                    portalSound.play();
+                  }, 300);
                   break;
                 }
               }
@@ -109,6 +126,9 @@ function moveNorth() {
                   goalList.splice(j, 1);
                   game.add.tween(replicaList[i].sprite).to({width: replicaList[i].width * 1.5, height: replicaList[i].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 300);
                   replicaList.splice(i, 1);
+                  setTimeout(function() {
+                    goalSound.play();
+                  }, 300);
                   break;
                 }
               }
@@ -153,6 +173,9 @@ function moveSouth() {
                   game.add.tween(replicaList[i].sprite).to({alpha: 0.5}, 500, Phaser.Easing.Linear.None, true, 300);
                   game.add.tween(replicaList[i].sprite).to({width: 0, height: 0}, 500, Phaser.Easing.Exponential.In, true, 800);
                   replicaList.splice(i, 1);
+                  setTimeout(function() {
+                    zapSound.play();
+                  }, 300);
                   break;
                 }
               }
@@ -161,6 +184,9 @@ function moveSouth() {
               for (j = portalList.length - 1; j >= 0; j--) {
                 if ((portalList[j].row === replicaList[i].row) && (portalList[j].col === replicaList[i].col)) {
                   teleport(replicaList, portalList, i, j);
+                  setTimeout(function() {
+                    portalSound.play();
+                  }, 300);
                   break;
                 }
               }
@@ -187,6 +213,9 @@ function moveSouth() {
                   goalList.splice(j, 1);
                   game.add.tween(replicaList[i].sprite).to({width: replicaList[i].width * 1.5, height: replicaList[i].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 300);
                   replicaList.splice(i, 1);
+                  setTimeout(function() {
+                    goalSound.play();
+                  }, 300);
                   break;
                 }
               }
@@ -231,6 +260,9 @@ function moveWest() {
                   game.add.tween(replicaList[i].sprite).to({alpha: 0.5}, 500, Phaser.Easing.Linear.None, true, 300);
                   game.add.tween(replicaList[i].sprite).to({width: 0, height: 0}, 500, Phaser.Easing.Exponential.In, true, 800);
                   replicaList.splice(i, 1);
+                  setTimeout(function() {
+                    zapSound.play();
+                  }, 300);
                   break;
                 }
               }
@@ -239,6 +271,9 @@ function moveWest() {
               for (j = portalList.length - 1; j >= 0; j--) {
                 if ((portalList[j].row === replicaList[i].row) && (portalList[j].col === replicaList[i].col)) {
                   teleport(replicaList, portalList, i, j);
+                  setTimeout(function() {
+                    portalSound.play();
+                  }, 300);
                   break;
                 }
               }
@@ -265,6 +300,9 @@ function moveWest() {
                   goalList.splice(j, 1);
                   game.add.tween(replicaList[i].sprite).to({width: replicaList[i].width * 1.5, height: replicaList[i].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 300);
                   replicaList.splice(i, 1);
+                  setTimeout(function() {
+                    goalSound.play();
+                  }, 300);
                   break;
                 }
               }
@@ -309,6 +347,9 @@ function moveEast() {
                   game.add.tween(replicaList[i].sprite).to({alpha: 0.5}, 500, Phaser.Easing.Linear.None, true, 300);
                   game.add.tween(replicaList[i].sprite).to({width: 0, height: 0}, 500, Phaser.Easing.Exponential.In, true, 800);
                   replicaList.splice(i, 1);
+                  setTimeout(function() {
+                    zapSound.play();
+                  }, 300);
                   break;
                 }
               }
@@ -317,6 +358,9 @@ function moveEast() {
               for (j = portalList.length - 1; j >= 0; j--) {
                 if ((portalList[j].row === replicaList[i].row) && (portalList[j].col === replicaList[i].col)) {
                   teleport(replicaList, portalList, i, j);
+                  setTimeout(function() {
+                    portalSound.play();
+                  }, 300);
                   break;
                 }
               }
@@ -343,6 +387,9 @@ function moveEast() {
                   goalList.splice(j, 1);
                   game.add.tween(replicaList[i].sprite).to({width: replicaList[i].width * 1.5, height: replicaList[i].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 300);
                   replicaList.splice(i, 1);
+                  setTimeout(function() {
+                    goalSound.play();
+                  }, 300);
                   break;
                 }
               }
@@ -382,6 +429,7 @@ function spaceProcess() {
 function resetProcess() {
   if (loaded) {
     if (goalList.length <= 0) {
+      winSound.play();
       loaded = false;
       completionList[levelIndex] = true;
     }
@@ -396,6 +444,7 @@ function resetProcess() {
 function nextProcess() {
   if (loaded) {
     if ((goalList.length <= 0) || completionList[levelIndex]) {
+      winSound.play();
       loaded = false;
       playState.camera.fade('#646464', 500, true);
       setTimeout(function() {
@@ -411,6 +460,7 @@ function nextProcess() {
 function previousProcess() {
   if (loaded) {
     if (levelIndex > 0) {
+      winSound.play();
       loaded = false;
       playState.camera.fade('#646464', 500, true);
       setTimeout(function() {
@@ -443,19 +493,35 @@ function endSwipe() {
   var distX = endX - startX;
   var distY = endY - startY;
 
-  if (Math.abs(distX) > (Math.abs(distY) * 2) && Math.abs(distX) > (game.width / 10)) {
-    if (distX > 0) {
-      moveEast();
+  if (Math.abs(distX) > (Math.abs(distY) * 2) && Math.abs(distX) > (game.width / 20)) {
+    if (landscape) {
+      if (distX > 0) {
+        moveEast();
+      } else {
+        moveWest();
+      }
     } else {
-      moveWest();
+      if (distX > 0) {
+        moveNorth();
+      } else {
+        moveSouth();
+      }
     }
   }
 
-  if (Math.abs(distY) > (Math.abs(distX) * 2) && Math.abs(distY) > (game.height / 10)) {
-    if (distY > 0) {
-      moveSouth();
+  if (Math.abs(distY) > (Math.abs(distX) * 2) && Math.abs(distY) > (game.height / 20)) {
+    if (landscape) {
+      if (distY > 0) {
+        moveSouth();
+      } else {
+        moveNorth();
+      }
     } else {
-      moveNorth();
+      if (distY > 0) {
+        moveEast();
+      } else {
+        moveWest();
+      }
     }
   }
 
