@@ -58,7 +58,7 @@ var playState = {
 function moveNorth() {
   if (ready) {
     ready = false;
-    setTimeout(setReady, 300);
+    setTimeout(setReady, 200);
     replicaList.sort(function(a, b){return b.row-a.row});
     for (i = replicaList.length - 1; i >= 0; i--) {
       var row = replicaList[i].row;
@@ -85,12 +85,12 @@ function moveNorth() {
             if (replicaList[i]) {
               for (j = zapOnList.length - 1; j >= 0; j--) {
                 if ((zapOnList[j].row === replicaList[i].row) && (zapOnList[j].col === replicaList[i].col)) {
-                  game.add.tween(replicaList[i].sprite).to({alpha: 0.5}, 500, Phaser.Easing.Linear.None, true, 300);
-                  game.add.tween(replicaList[i].sprite).to({width: 0, height: 0}, 500, Phaser.Easing.Exponential.In, true, 800);
+                  game.add.tween(replicaList[i].sprite).to({alpha: 0.5}, 500, Phaser.Easing.Linear.None, true, 200);
+                  game.add.tween(replicaList[i].sprite).to({width: 0, height: 0}, 500, Phaser.Easing.Exponential.In, true, 700);
                   replicaList.splice(i, 1);
                   setTimeout(function() {
                     zapOnSound.play();
-                  }, 300);
+                  }, 200);
                   break;
                 }
               }
@@ -101,7 +101,7 @@ function moveNorth() {
                   teleport(replicaList, portalList, i, j);
                   setTimeout(function() {
                     portalSound.play();
-                  }, 300);
+                  }, 200);
                   break;
                 }
               }
@@ -113,12 +113,12 @@ function moveNorth() {
                   var zapOn = new Item(zapOffList[j].x, zapOffList[j].y, zapOffList[j].col, zapOffList[j].row, zapOffList[j].width, zapOffList[j].height, 'Z');
                   zapOnList.push(zapOn);
                   zapOn.show();
-                  game.add.tween(zapOn.sprite).from({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
-                  game.add.tween(zapOffList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
+                  game.add.tween(zapOn.sprite).from({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 200);
+                  game.add.tween(zapOffList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 200);
                   zapOffList.splice(j, 1);
                   setTimeout(function() {
                     zapOffSound.play();
-                  }, 300);
+                  }, 200);
                   break;
                 }
               }
@@ -127,13 +127,13 @@ function moveNorth() {
               for (j = goalList.length - 1; j >= 0; j--) {
                 if ((goalList[j].row === replicaList[i].row) && (goalList[j].col === replicaList[i].col)) {
                   blockedList.push({row: goalList[j].row, col: goalList[j].col});
-                  game.add.tween(goalList[j].sprite).to({width: goalList[j].width * 1.5, height: goalList[j].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 300);
+                  game.add.tween(goalList[j].sprite).to({width: goalList[j].width * 1.5, height: goalList[j].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 200);
                   goalList.splice(j, 1);
-                  game.add.tween(replicaList[i].sprite).to({width: replicaList[i].width * 1.5, height: replicaList[i].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 300);
+                  game.add.tween(replicaList[i].sprite).to({width: replicaList[i].width * 1.5, height: replicaList[i].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 200);
                   replicaList.splice(i, 1);
                   setTimeout(function() {
                     goalSound.play();
-                  }, 300);
+                  }, 200);
                   break;
                 }
               }
@@ -148,7 +148,7 @@ function moveNorth() {
 function moveSouth() {
   if (ready) {
     ready = false;
-    setTimeout(setReady, 300);
+    setTimeout(setReady, 200);
     replicaList.sort(function(a, b){return a.row-b.row});
     for (i = replicaList.length - 1; i >= 0; i--) {
       var row = replicaList[i].row;
@@ -175,12 +175,12 @@ function moveSouth() {
             if (replicaList[i]) {
               for (j = zapOnList.length - 1; j >= 0; j--) {
                 if ((zapOnList[j].row === replicaList[i].row) && (zapOnList[j].col === replicaList[i].col)) {
-                  game.add.tween(replicaList[i].sprite).to({alpha: 0.5}, 500, Phaser.Easing.Linear.None, true, 300);
-                  game.add.tween(replicaList[i].sprite).to({width: 0, height: 0}, 500, Phaser.Easing.Exponential.In, true, 800);
+                  game.add.tween(replicaList[i].sprite).to({alpha: 0.5}, 500, Phaser.Easing.Linear.None, true, 200);
+                  game.add.tween(replicaList[i].sprite).to({width: 0, height: 0}, 500, Phaser.Easing.Exponential.In, true, 700);
                   replicaList.splice(i, 1);
                   setTimeout(function() {
                     zapOnSound.play();
-                  }, 300);
+                  }, 200);
                   break;
                 }
               }
@@ -191,7 +191,7 @@ function moveSouth() {
                   teleport(replicaList, portalList, i, j);
                   setTimeout(function() {
                     portalSound.play();
-                  }, 300);
+                  }, 200);
                   break;
                 }
               }
@@ -203,12 +203,12 @@ function moveSouth() {
                   var zapOn = new Item(zapOffList[j].x, zapOffList[j].y, zapOffList[j].col, zapOffList[j].row, zapOffList[j].width, zapOffList[j].height, 'Z');
                   zapOnList.push(zapOn);
                   zapOn.show();
-                  game.add.tween(zapOn.sprite).from({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
-                  game.add.tween(zapOffList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
+                  game.add.tween(zapOn.sprite).from({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 200);
+                  game.add.tween(zapOffList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 200);
                   zapOffList.splice(j, 1);
                   setTimeout(function() {
                     zapOffSound.play();
-                  }, 300);
+                  }, 200);
                   break;
                 }
               }
@@ -217,13 +217,13 @@ function moveSouth() {
               for (j = goalList.length - 1; j >= 0; j--) {
                 if ((goalList[j].row === replicaList[i].row) && (goalList[j].col === replicaList[i].col)) {
                   blockedList.push({row: goalList[j].row, col: goalList[j].col});
-                  game.add.tween(goalList[j].sprite).to({width: goalList[j].width * 1.5, height: goalList[j].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 300);
+                  game.add.tween(goalList[j].sprite).to({width: goalList[j].width * 1.5, height: goalList[j].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 200);
                   goalList.splice(j, 1);
-                  game.add.tween(replicaList[i].sprite).to({width: replicaList[i].width * 1.5, height: replicaList[i].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 300);
+                  game.add.tween(replicaList[i].sprite).to({width: replicaList[i].width * 1.5, height: replicaList[i].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 200);
                   replicaList.splice(i, 1);
                   setTimeout(function() {
                     goalSound.play();
-                  }, 300);
+                  }, 200);
                   break;
                 }
               }
@@ -238,7 +238,7 @@ function moveSouth() {
 function moveWest() {
   if (ready) {
     ready = false;
-    setTimeout(setReady, 300);
+    setTimeout(setReady, 200);
     replicaList.sort(function(a, b){return b.col-a.col});
     for (i = replicaList.length - 1; i >= 0; i--) {
       var row = replicaList[i].row;
@@ -265,12 +265,12 @@ function moveWest() {
             if (replicaList[i]) {
               for (j = zapOnList.length - 1; j >= 0; j--) {
                 if ((zapOnList[j].row === replicaList[i].row) && (zapOnList[j].col === replicaList[i].col)) {
-                  game.add.tween(replicaList[i].sprite).to({alpha: 0.5}, 500, Phaser.Easing.Linear.None, true, 300);
-                  game.add.tween(replicaList[i].sprite).to({width: 0, height: 0}, 500, Phaser.Easing.Exponential.In, true, 800);
+                  game.add.tween(replicaList[i].sprite).to({alpha: 0.5}, 500, Phaser.Easing.Linear.None, true, 200);
+                  game.add.tween(replicaList[i].sprite).to({width: 0, height: 0}, 500, Phaser.Easing.Exponential.In, true, 700);
                   replicaList.splice(i, 1);
                   setTimeout(function() {
                     zapOnSound.play();
-                  }, 300);
+                  }, 200);
                   break;
                 }
               }
@@ -281,7 +281,7 @@ function moveWest() {
                   teleport(replicaList, portalList, i, j);
                   setTimeout(function() {
                     portalSound.play();
-                  }, 300);
+                  }, 200);
                   break;
                 }
               }
@@ -293,12 +293,12 @@ function moveWest() {
                   var zapOn = new Item(zapOffList[j].x, zapOffList[j].y, zapOffList[j].col, zapOffList[j].row, zapOffList[j].width, zapOffList[j].height, 'Z');
                   zapOnList.push(zapOn);
                   zapOn.show();
-                  game.add.tween(zapOn.sprite).from({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
-                  game.add.tween(zapOffList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
+                  game.add.tween(zapOn.sprite).from({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 200);
+                  game.add.tween(zapOffList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 200);
                   zapOffList.splice(j, 1);
                   setTimeout(function() {
                     zapOffSound.play();
-                  }, 300);
+                  }, 200);
                   break;
                 }
               }
@@ -307,13 +307,13 @@ function moveWest() {
               for (j = goalList.length - 1; j >= 0; j--) {
                 if ((goalList[j].row === replicaList[i].row) && (goalList[j].col === replicaList[i].col)) {
                   blockedList.push({row: goalList[j].row, col: goalList[j].col});
-                  game.add.tween(goalList[j].sprite).to({width: goalList[j].width * 1.5, height: goalList[j].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 300);
+                  game.add.tween(goalList[j].sprite).to({width: goalList[j].width * 1.5, height: goalList[j].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 200);
                   goalList.splice(j, 1);
-                  game.add.tween(replicaList[i].sprite).to({width: replicaList[i].width * 1.5, height: replicaList[i].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 300);
+                  game.add.tween(replicaList[i].sprite).to({width: replicaList[i].width * 1.5, height: replicaList[i].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 200);
                   replicaList.splice(i, 1);
                   setTimeout(function() {
                     goalSound.play();
-                  }, 300);
+                  }, 200);
                   break;
                 }
               }
@@ -328,7 +328,7 @@ function moveWest() {
 function moveEast() {
   if (ready) {
     ready = false;
-    setTimeout(setReady, 300);
+    setTimeout(setReady, 200);
     replicaList.sort(function(a, b){return a.col-b.col});
     for (i = replicaList.length - 1; i >= 0; i--) {
       var row = replicaList[i].row;
@@ -355,12 +355,12 @@ function moveEast() {
             if (replicaList[i]) {
               for (j = zapOnList.length - 1; j >= 0; j--) {
                 if ((zapOnList[j].row === replicaList[i].row) && (zapOnList[j].col === replicaList[i].col)) {
-                  game.add.tween(replicaList[i].sprite).to({alpha: 0.5}, 500, Phaser.Easing.Linear.None, true, 300);
-                  game.add.tween(replicaList[i].sprite).to({width: 0, height: 0}, 500, Phaser.Easing.Exponential.In, true, 800);
+                  game.add.tween(replicaList[i].sprite).to({alpha: 0.5}, 500, Phaser.Easing.Linear.None, true, 200);
+                  game.add.tween(replicaList[i].sprite).to({width: 0, height: 0}, 500, Phaser.Easing.Exponential.In, true, 700);
                   replicaList.splice(i, 1);
                   setTimeout(function() {
                     zapOnSound.play();
-                  }, 300);
+                  }, 200);
                   break;
                 }
               }
@@ -371,7 +371,7 @@ function moveEast() {
                   teleport(replicaList, portalList, i, j);
                   setTimeout(function() {
                     portalSound.play();
-                  }, 300);
+                  }, 200);
                   break;
                 }
               }
@@ -383,12 +383,12 @@ function moveEast() {
                   var zapOn = new Item(zapOffList[j].x, zapOffList[j].y, zapOffList[j].col, zapOffList[j].row, zapOffList[j].width, zapOffList[j].height, 'Z');
                   zapOnList.push(zapOn);
                   zapOn.show();
-                  game.add.tween(zapOn.sprite).from({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
-                  game.add.tween(zapOffList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
+                  game.add.tween(zapOn.sprite).from({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 200);
+                  game.add.tween(zapOffList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 200);
                   zapOffList.splice(j, 1);
                   setTimeout(function() {
                     zapOffSound.play();
-                  }, 300);
+                  }, 200);
                   break;
                 }
               }
@@ -397,13 +397,13 @@ function moveEast() {
               for (j = goalList.length - 1; j >= 0; j--) {
                 if ((goalList[j].row === replicaList[i].row) && (goalList[j].col === replicaList[i].col)) {
                   blockedList.push({row: goalList[j].row, col: goalList[j].col});
-                  game.add.tween(goalList[j].sprite).to({width: goalList[j].width * 1.5, height: goalList[j].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 300);
+                  game.add.tween(goalList[j].sprite).to({width: goalList[j].width * 1.5, height: goalList[j].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 200);
                   goalList.splice(j, 1);
-                  game.add.tween(replicaList[i].sprite).to({width: replicaList[i].width * 1.5, height: replicaList[i].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 300);
+                  game.add.tween(replicaList[i].sprite).to({width: replicaList[i].width * 1.5, height: replicaList[i].height * 1.5}, 1000, Phaser.Easing.Elastic.Out, true, 200);
                   replicaList.splice(i, 1);
                   setTimeout(function() {
                     goalSound.play();
-                  }, 300);
+                  }, 200);
                   break;
                 }
               }
@@ -429,7 +429,7 @@ function teleport(rList, pList, m, n) {
     game.add.tween(pList[0].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true);
     game.add.tween(pList[1].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true);
     pList.length = 0;
-  }, 300);
+  }, 200);
 }
 
 function spaceProcess() {
