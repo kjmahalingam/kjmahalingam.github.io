@@ -37,7 +37,8 @@ var loadState = {
     game.load.audio('Replica', 'Audio/Replica.mp3');
     game.load.audio('Goal', 'Audio/Goal.mp3');
     game.load.audio('Win', 'Audio/Win.mp3');
-    game.load.audio('Zap', 'Audio/Zap.mp3');
+    game.load.audio('ZapOn', 'Audio/ZapOn.mp3');
+    game.load.audio('ZapOff', 'Audio/ZapOff.mp3');
     game.load.audio('Portal', 'Audio/Portal.mp3');
   },
 
@@ -46,6 +47,7 @@ var loadState = {
     // Play background music
     music = game.add.audio('Replica');
     music.loop = true;
+    music.volume = 0.5;
     music.play();
     // Start menu state
     game.state.start('menu');

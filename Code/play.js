@@ -44,7 +44,9 @@ var playState = {
     previousButton.width = previousButton.height = minDimension * 0.075;
     winSound = game.add.audio("Win");
     goalSound = game.add.audio("Goal");
-    zapSound = game.add.audio("Zap");
+    zapOnSound = game.add.audio("ZapOn");
+    zapOffSound = game.add.audio("ZapOff");
+    zapOffSound.volume = 0.6;
     portalSound = game.add.audio("Portal");
     setTimeout(setLoaded, 500);
   },
@@ -87,7 +89,7 @@ function moveNorth() {
                   game.add.tween(replicaList[i].sprite).to({width: 0, height: 0}, 500, Phaser.Easing.Exponential.In, true, 800);
                   replicaList.splice(i, 1);
                   setTimeout(function() {
-                    zapSound.play();
+                    zapOnSound.play();
                   }, 300);
                   break;
                 }
@@ -114,6 +116,9 @@ function moveNorth() {
                   game.add.tween(zapOn.sprite).from({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
                   game.add.tween(zapOffList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
                   zapOffList.splice(j, 1);
+                  setTimeout(function() {
+                    zapOffSound.play();
+                  }, 300);
                   break;
                 }
               }
@@ -174,7 +179,7 @@ function moveSouth() {
                   game.add.tween(replicaList[i].sprite).to({width: 0, height: 0}, 500, Phaser.Easing.Exponential.In, true, 800);
                   replicaList.splice(i, 1);
                   setTimeout(function() {
-                    zapSound.play();
+                    zapOnSound.play();
                   }, 300);
                   break;
                 }
@@ -201,6 +206,9 @@ function moveSouth() {
                   game.add.tween(zapOn.sprite).from({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
                   game.add.tween(zapOffList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
                   zapOffList.splice(j, 1);
+                  setTimeout(function() {
+                    zapOffSound.play();
+                  }, 300);
                   break;
                 }
               }
@@ -261,7 +269,7 @@ function moveWest() {
                   game.add.tween(replicaList[i].sprite).to({width: 0, height: 0}, 500, Phaser.Easing.Exponential.In, true, 800);
                   replicaList.splice(i, 1);
                   setTimeout(function() {
-                    zapSound.play();
+                    zapOnSound.play();
                   }, 300);
                   break;
                 }
@@ -288,6 +296,9 @@ function moveWest() {
                   game.add.tween(zapOn.sprite).from({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
                   game.add.tween(zapOffList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
                   zapOffList.splice(j, 1);
+                  setTimeout(function() {
+                    zapOffSound.play();
+                  }, 300);
                   break;
                 }
               }
@@ -348,7 +359,7 @@ function moveEast() {
                   game.add.tween(replicaList[i].sprite).to({width: 0, height: 0}, 500, Phaser.Easing.Exponential.In, true, 800);
                   replicaList.splice(i, 1);
                   setTimeout(function() {
-                    zapSound.play();
+                    zapOnSound.play();
                   }, 300);
                   break;
                 }
@@ -375,6 +386,9 @@ function moveEast() {
                   game.add.tween(zapOn.sprite).from({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
                   game.add.tween(zapOffList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 300);
                   zapOffList.splice(j, 1);
+                  setTimeout(function() {
+                    zapOffSound.play();
+                  }, 300);
                   break;
                 }
               }
