@@ -5,7 +5,7 @@ var bootState = {
     // Set orientation
     landscape = (game.width >= game.height);
     // Initialize background
-    game.stage.backgroundColor = "#646464";
+    game.stage.backgroundColor = "#DDDDDD";
     // Start load state
     game.state.start('load');
   }

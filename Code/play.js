@@ -31,7 +31,7 @@ var playState = {
   // Automatically called
   create: function() {
     loadLevel();
-    this.camera.flash('#646464', 500, true);
+    this.camera.flash('#DDDDDD', 500, true);
     minDimension = Math.min(game.width, game.height);
     resetButton = game.add.button(game.width * 0.5, game.height * 0.925, 'Reset', resetProcess, this);
     resetButton.anchor.setTo(0.5, 0.5);
