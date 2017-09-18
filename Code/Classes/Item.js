@@ -38,8 +38,8 @@ function Item(x_, y_, col_, row_, width_, height_, type_) {
             this.y -= this.height;
             game.add.tween(this.sprite).to({y: this.sprite.y - this.height}, 100, Phaser.Easing.Linear.None, true, 100);
           } else {
-            this.x += this.width;
-            game.add.tween(this.sprite).to({x: this.sprite.x + this.width}, 100, Phaser.Easing.Linear.None, true, 100);
+            this.x -= this.width;
+            game.add.tween(this.sprite).to({x: this.sprite.x - this.width}, 100, Phaser.Easing.Linear.None, true, 100);
           }
           game.add.tween(this.sprite).to({width: this.width, height: this.height}, 100, Phaser.Easing.Linear.None, true, 200);
           break;
@@ -50,8 +50,8 @@ function Item(x_, y_, col_, row_, width_, height_, type_) {
             this.x += this.width;
             game.add.tween(this.sprite).to({x: this.sprite.x + this.width}, 100, Phaser.Easing.Linear.None, true, 100);
           } else {
-            this.y += this.height;
-            game.add.tween(this.sprite).to({y: this.sprite.y + this.height}, 100, Phaser.Easing.Linear.None, true, 100);
+            this.y -= this.height;
+            game.add.tween(this.sprite).to({y: this.sprite.y - this.height}, 100, Phaser.Easing.Linear.None, true, 100);
           }
           game.add.tween(this.sprite).to({width: this.width, height: this.height}, 100, Phaser.Easing.Linear.None, true, 200);
           break;
@@ -62,8 +62,8 @@ function Item(x_, y_, col_, row_, width_, height_, type_) {
             this.y += this.height;
             game.add.tween(this.sprite).to({y: this.sprite.y + this.height}, 100, Phaser.Easing.Linear.None, true, 100);
           } else {
-            this.x -= this.width;
-            game.add.tween(this.sprite).to({x: this.sprite.x - this.width}, 100, Phaser.Easing.Linear.None, true, 100);
+            this.x += this.width;
+            game.add.tween(this.sprite).to({x: this.sprite.x + this.width}, 100, Phaser.Easing.Linear.None, true, 100);
           }
           game.add.tween(this.sprite).to({width: this.width, height: this.height}, 100, Phaser.Easing.Linear.None, true, 200);
           break;
@@ -74,8 +74,8 @@ function Item(x_, y_, col_, row_, width_, height_, type_) {
             this.x -= this.width;
             game.add.tween(this.sprite).to({x: this.sprite.x - this.width}, 100, Phaser.Easing.Linear.None, true, 100);
           } else {
-            this.y -= this.height;
-            game.add.tween(this.sprite).to({y: this.sprite.y - this.height}, 100, Phaser.Easing.Linear.None, true, 100);
+            this.y += this.height;
+            game.add.tween(this.sprite).to({y: this.sprite.y + this.height}, 100, Phaser.Easing.Linear.None, true, 100);
           }
           game.add.tween(this.sprite).to({width: this.width, height: this.height}, 100, Phaser.Easing.Linear.None, true, 200);
           break;

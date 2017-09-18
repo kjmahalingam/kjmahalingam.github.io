@@ -16,10 +16,10 @@ var playState = {
       leftKey.onDown.add(moveWest, this);
       rightKey.onDown.add(moveEast, this);
     } else {
-      upKey.onDown.add(moveWest, this);
-      downKey.onDown.add(moveEast, this);
-      leftKey.onDown.add(moveSouth, this);
-      rightKey.onDown.add(moveNorth, this);
+      upKey.onDown.add(moveEast, this);
+      downKey.onDown.add(moveWest, this);
+      leftKey.onDown.add(moveNorth, this);
+      rightKey.onDown.add(moveSouth, this);
     }
     spaceKey.onDown.add(spaceProcess, this);
     startX = 0;
@@ -502,9 +502,9 @@ function endSwipe() {
       }
     } else {
       if (distX > 0) {
-        moveNorth();
-      } else {
         moveSouth();
+      } else {
+        moveNorth();
       }
     }
   }
@@ -518,9 +518,9 @@ function endSwipe() {
       }
     } else {
       if (distY > 0) {
-        moveEast();
-      } else {
         moveWest();
+      } else {
+        moveEast();
       }
     }
   }
