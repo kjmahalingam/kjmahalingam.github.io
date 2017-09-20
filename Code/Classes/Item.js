@@ -8,6 +8,7 @@ function Item(x_, y_, col_, row_, width_, height_, type_) {
   this.height = height_;
   this.type = type_;
   this.sprite;
+  this.finished = false;
 
   // Draw item
   this.show = function() {
