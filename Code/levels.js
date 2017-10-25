@@ -24,27 +24,13 @@ var item2 = [
 
 // Level 3
 var floor3 = [
-  ['E', 'EW', 'EW', 'SW', 'O', 'O', 'ES', 'W'],
-  ['O', 'O', 'O', 'NE', 'EW', 'EW', 'NW', 'O'],
-  ['O', 'ES', 'EW', 'EW', 'SW', 'O', 'O', 'O'],
-  ['E', 'NW', 'O', 'O', 'NE', 'EW', 'EW', 'W']
+  ['E', 'SW', '', '', '', '', ''],
+  ['', 'NE', 'EW', 'EW', 'W', '', ''],
+  ['E', 'EW', 'EW', 'EW', 'EW', 'EW', 'W'],
+  ['', '', 'ES', 'EW', 'EW', 'W', ''],
+  ['E', 'EW', 'NW', '', '', '', '']
 ];
 var item3 = [
-  ['B', '', '', '', '', '', '', 'W'],
-  ['', '', '', '', '', '', '', ''],
-  ['', '', '', '', '', '', '', ''],
-  ['O', '', '', '', '', '', '', 'W']
-];
-
-// Level 4
-var floor4 = [
-  ['E', 'SW', 'O', 'O', 'O', 'O', 'O'],
-  ['O', 'NE', 'EW', 'EW', 'W', 'O', 'O'],
-  ['E', 'EW', 'EW', 'EW', 'EW', 'EW', 'W'],
-  ['O', 'O', 'ES', 'EW', 'EW', 'W', 'O'],
-  ['E', 'EW', 'NW', 'O', 'O', 'O', 'O']
-];
-var item4 = [
   ['B', '', '', '', '', '', ''],
   ['', '', '', '', 'W', '', ''],
   ['O', '', '', '', '', '', 'W'],
@@ -52,34 +38,34 @@ var item4 = [
   ['G', '', '', '', '', '', '']
 ];
 
-// Level 5
-var floor5 = [
-  ['O', 'O', 'ES', 'ESW', 'SW', 'O', 'O'],
+// Level 4
+var floor4 = [
+  ['', '', 'ES', 'ESW', 'SW', '', ''],
   ['E', 'EW', 'NESW', 'NESW', 'NESW', 'EW', 'W'],
-  ['O', 'O', 'NE', 'NEW', 'NW', 'O', 'O']
+  ['', '', 'NE', 'NEW', 'NW', '', '']
 ];
-var item5 = [
+var item4 = [
   ['', '', '', '', '', '', ''],
   ['B', '', '', 'Z', '', '', 'W'],
   ['', '', '', '', '', '', '']
 ];
 
-// Level 6
-var floor6 = [
+// Level 5
+var floor5 = [
   ['ES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW'],
   ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW'],
   ['ES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW'],
   ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW']
 ];
-var item6 = [
+var item5 = [
   ['', '', '', '', '', '', ''],
   ['B', '', 'Z', '', '', '', 'W'],
   ['', '', '', '', 'Z', '', 'W'],
   ['O', '', '', '', '', '', '']
 ];
 
-// Level 7
-var floor7 = [
+// Level 6
+var floor6 = [
   ['ES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW', '', ''],
   ['NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW', '', ''],
   ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW', '', ''],
@@ -90,7 +76,7 @@ var floor7 = [
   ['', '', 'NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW'],
   ['', '', 'NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW']
 ];
-var item7 = [
+var item6 = [
   ['', '', '', 'Z', '', '', '', '', ''],
   ['B', 'Z', '', '', '', '', 'W', '', ''],
   ['', '', '', '', '', '', '', '', ''],
@@ -102,171 +88,265 @@ var item7 = [
   ['', '', '', 'Z', '', '', '', '', 'W']
 ];
 
-// Level 8
-var floor8 = [
-  ['ES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW'],
-  ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW']
-];
-var item8 = [
-  ['B', 'O', '', '', 'Z', '', 'W'],
-  ['Z', '', '', '', '', '', 'W']
-];
-
-// Level 9
-var floor9 = [
-  ['S', 'O', 'O', 'O', 'O', 'O', 'O'],
+// Level 7
+var floor7 = [
+  ['S', '', '', '', '', '', ''],
   ['NES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW'],
   ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW']
 ];
-var item9 = [
+var item7 = [
   ['', '', '', '', '', '', ''],
   ['', '', '', '', '', '', ''],
   ['B', 'O', '', 'Z', 'W', 'Z', 'W']
 ];
 
-// Level 10
-var floor10 = [
-  ['S', 'O', 'O', 'ES', 'ESW', 'ESW', 'ESW', 'ESW', 'SW'],
+// Level 8
+var floor8 = [
+  ['S', '', '', 'ES', 'ESW', 'ESW', 'ESW', 'ESW', 'SW'],
   ['NS', 'ES', 'ESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW'],
   ['NS', 'NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NEW', 'NW'],
-  ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW', 'O', 'O']
+  ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW', '', '']
 ];
-var item10 = [
+var item8 = [
   ['Z', '', '', 'Z', 'Z', 'W', 'Z', 'Z', 'W'],
   ['B', 'Z', 'Z', '', '', '', '', '', ''],
   ['O', '', '', '', '', '', '', 'Z', 'Z'],
   ['', '', '', '', '', 'Z', 'Z', '', '']
 ];
-// Level 11
-var floor11 = [
-  ['ES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW'],
-  ['NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW'],
-  ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW']
+
+var floor9 = [
+  ["ES", "ESW", "ESW", "ESW", "ESW", "ESW", "ESW", "SW"],
+  ["NES", "NESW", "NESW", "NESW", "NESW", "NESW", "NESW", "NSW"],
+  ["NE", "NEW", "NEW", "NEW", "NEW", "NEW", "NEW", "NW"]
 ];
-var item11 = [
-  ['', '', '', '', '', '', '', 'W'],
-  ['', '', '', '', '', '', '', ''],
-  ['B', 'O', 'G', '', 'Z', 'W', 'Z', 'W']
+var item9 = [
+  ["", "", "", "", "", "", "", "W"],
+  ["B", "O", "G", "", "", "", "", ""],
+  ["", "", "", "", "Z", "W", "Z", "W"]
 ];
 
-// Level 12
-var floor12 = [
+// Level 10
+var floor10 = [
   ['ES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW'],
   ['NES', 'NESW', 'NSW', 'NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW'],
   ['NES', 'NESW', 'NSW', 'NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW'],
   ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW']
 ];
-var item12 = [
+var item10 = [
   ['B', '', '', '', '', 'Z', 'W', 'Z', 'W', 'Z'],
   ['O', '', '', '', '', 'Z', '', 'Z', '', 'Z'],
   ['G', '', '', '', '', '', '', '', '', ''],
   ['P', '', '', '', '', 'Z', 'Z', 'W', 'Z', 'W']
 ];
 
+// Level 11
+var floor11 = [
+  ['E', 'EW', 'EW', 'EW', 'EW', 'EW', 'W']
+];
+var item11 = [
+  ['B', '', '', 'Y', '', '', 'W']
+];
+
+// Level 12
+var floor12 = [
+  ['ES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW'],
+  ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW']
+];
+var item12 = [
+  ['', '', '', 'Y', '', '', 'W'],
+  ['B', '', 'O', 'Y', '', '', 'W']
+];
+
 // Level 13
 var floor13 = [
-  ['E', 'EW', 'EW', 'EW', 'EW', 'W', ''],
-  ['', 'E', 'EW', 'EW', 'EW', 'EW', 'W']
+  ['ES', 'ESW', 'ESW', 'SW', 'ES', 'ESW', 'ESW', 'SW'],
+  ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW']
 ];
 var item13 = [
-  ['B', '', '', '', '', 'T', ''],
-  ['', 'T', '', '', '', '', 'W']
+  ['Z', 'B', 'Y', 'Y', 'Y', 'Y', 'Y', 'W'],
+  ['Z', 'O', 'Y', '', '', 'Y', 'Y', 'W']
 ];
 
 // Level 14
 var floor14 = [
-  ['ES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW'],
-  ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW']
-];
-var item14 = [
-  ['B', '', '', 'W', 'Z', '', '', '', '', 'Z'],
-  ['O', '', 'T', '', 'Z', 'W', '', '', 'T', 'Z']
-];
-
-// Level 15
-var floor15 = [
-  ['O', 'E', 'EW', 'EW', 'ESW', 'SW', 'O', 'O', 'ES', 'ESW', 'SW'],
-  ['O', 'O', 'O', 'O', 'NES', 'NESW', 'SW', 'ES', 'NESW', 'NESW', 'NSW'],
-  ['E', 'EW', 'EW', 'EW', 'NESW', 'NESW', 'NSW', 'NES', 'NESW', 'NESW', 'NSW'],
-  ['O', 'O', 'O', 'O', 'NES', 'NESW', 'NW', 'NE', 'NESW', 'NESW', 'NSW'],
-  ['O', 'E', 'EW', 'EW', 'NEW', 'NW', 'O', 'O', 'NE', 'NEW', 'NW'],
-];
-var item15 = [
-  ['', 'W', '', '', '', 'Z', '', '', 'Z', 'Z', 'Z'],
-  ['', '', '', '', '', '', 'Z', 'Z', '', '', ''],
-  ['Z', 'B', 'O', 'G', '', 'T', 'Z', 'W', '', '', 'T'],
-  ['', '', '', '', '', '', 'Z', 'Z', '', '', ''],
-  ['', 'W', '', '', '', 'Z', '', '', 'Z', 'Z', 'Z']
-];
-
-// Level 16
-var floor16 = [
-  ['ES', 'SW', 'ES', 'ESW', 'ESW', 'ESW', 'SW', 'O', 'O'],
-  ['NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW', 'O', 'S'],
-  ['NES', 'NSW', 'NES', 'NESW', 'NESW', 'NESW', 'NSW', 'E', 'NSW'],
-  ['NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW', 'O', 'N'],
-  ['NE', 'NW', 'NE', 'NEW', 'NEW', 'NEW', 'NW', 'O', 'O'],
-  ['O', 'ES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW'],
-  ['O', 'NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW'],
-  ['O', 'NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW']
-];
-var item16 = [
-  ['', '', '', '', '', '', '', '', ''],
-  ['B', '', '', '', '', 'Z', 'W', '', 'Z'],
-  ['O', '', '', 'Z', '', '', 'W', 'W', 'T'],
-  ['G', '', '', '', '', 'Z', 'W', '', 'Z'],
-  ['', '', '', '', '', '', '', '', ''],
-  ['', '', '', '', '', '', '', 'Z', 'Z'],
-  ['', 'P', '', '', 'Z', '', '', '', 'T'],
-  ['', '', '', '', 'Z', '', '', '', 'Z']
-];
-
-// Level 17
-var floor17 = [
-  ['E', 'EW', 'EW', 'EW', 'EW', 'EW', 'W']
-];
-var item17 = [
-  ['B', '', '', 'Y', '', '', 'W']
-];
-
-// Level 18
-var floor18 = [
-  ['ES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW'],
-  ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW']
-];
-var item18 = [
-  ['', '', '', '', 'Y', '', '', '', 'W'],
-  ['B', '', 'O', '', 'Y', '', '', '', 'W']
-];
-
-// Level 19
-var floor19 = [
-  ['ES', 'ESW', 'ESW', 'SW', 'O', 'ES', 'ESW', 'ESW', 'SW'],
+  ['ES', 'ESW', 'ESW', 'SW', '', 'ES', 'ESW', 'ESW', 'SW'],
   ['NES', 'NESW', 'NESW', 'NESW', 'ESW', 'NESW', 'NESW', 'NESW', 'NSW'],
   ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW']
 ];
-var item19 = [
+var item14 = [
   ['Z', '', '', '', '', '', 'Y', 'Y', 'W'],
   ['Z', 'B', 'O', 'G', '', '', 'Y', 'Y', 'W'],
   ['Z', '', '', '', '', '', 'Y', 'Y', 'W']
 ];
 
+// Level 15
+var floor15 = [
+  ['ES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW'],
+  ['NES', 'NESW', 'NESW', 'NESW', 'NEW', 'NESW', 'NESW', 'NESW', 'NSW'],
+  ['NE', 'NEW', 'NEW', 'NW', '', 'NE', 'NEW', 'NEW', 'NW']
+];
+var item15 = [
+  ['Z', '', '', '', '', '', 'Y', 'Y', 'W'],
+  ['Z', 'B', 'O', 'G', 'Y', '', 'Y', 'Y', 'W'],
+  ['Z', '', '', '', '', '', 'Y', 'Y', 'W']
+];
+
+// Level 16
+var floor16 = [
+  ['', '', '', 'S', '', '', ''],
+  ['', '', '', 'NS', '', '', ''],
+  ['', '', 'ES', 'NESW', 'SW', '', ''],
+  ['E', 'EW', 'NESW', 'NESW', 'NESW', 'EW', 'W'],
+  ['', '', 'NE', 'NESW', 'NW', '', ''],
+  ['', '', '', 'NS', '', '', ''],
+  ['', '', '', 'N', '', '', '']
+];
+var item16 = [
+  ['', '', '', 'W', '', '', ''],
+  ['', '', '', 'Y', '', '', ''],
+  ['', '', 'B', '', 'O', '', ''],
+  ['W', 'Y', '', '', '', 'Y', 'W'],
+  ['', '', 'G', '', 'P', '', ''],
+  ['', '', '', 'Y', '', '', ''],
+  ['', '', '', 'W', '', '', '']
+];
+
+// Level 17
+var floor17 = [
+  ['S', '', 'S', '', 'ES', 'SW', 'S', '', ''],
+  ['NES', 'ESW', 'NESW', 'ESW', 'NESW', 'NESW', 'NESW', 'W', ''],
+  ['NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'EW', 'W'],
+  ['NES', 'NEW', 'NESW', 'NEW', 'NESW', 'NESW', 'NESW', 'W' ,''],
+  ['N', '', 'N', '', 'NE', 'NW', 'N', '', '']
+];
+var item17 = [
+  ['Y', '', 'Y', '', 'Y', 'Z', 'W', '', ''],
+  ['', 'B', '', 'Y', '', '', 'Y', 'Z', ''],
+  ['', 'O', '', 'Y', '', '', '', 'Y', 'W'],
+  ['', 'G', '', 'Y', '', '', 'Y', 'Z', ''],
+  ['Y', '', 'Y', '', 'Y', 'Z', 'W', '', '']
+];
+
+// Level 18
+var floor18 = [
+  ['', '', '', '', 'S', '', '', '', ''],
+  ['', '', '', '', 'NS', '', '', '', ''],
+  ['', 'E', 'EW', 'ESW', 'NESW', 'ESW', 'EW', 'W', ''],
+  ['E', 'EW', 'EW', 'NESW', 'NESW', 'NESW', 'EW', 'EW', 'W'],
+  ['', 'E', 'EW', 'NEW', 'NESW', 'NEW', 'EW', 'W', ''],
+  ['', '', '', '', 'NS', '', '', '', ''],
+  ['', '', '', '', 'N', '', '', '', '']
+];
+var item18 = [
+  ['', '', '', '', 'W', '', '', '', ''],
+  ['', '', '', '', 'Y', '', '', '', ''],
+  ['', 'Y', 'B', '', '', '', 'O', 'Y', ''],
+  ['W', 'Y', '', '', 'Y', '', '', 'Y', 'W'],
+  ['', 'Y', 'G', '', '', '', 'P', 'Y', ''],
+  ['', '', '', '', 'Y', '', '', '', ''],
+  ['', '', '', '', 'W', '', '', '', '']
+];
+
+// Level 19
+var floor19 = [
+  ['ES', 'ESW', 'ESW', 'ESW', 'SW', 'ES', 'ESW', 'ESW', 'SW'],
+  ['NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW'],
+  ['NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW'],
+  ['NE', 'NEW', 'NEW', 'NW', 'NE', 'NEW', 'NEW', 'NEW', 'NW']
+];
+var item19 = [
+  ['Z', '', '', '', 'Y', '', 'Y', 'Y', 'W'],
+  ['Z', 'B', 'O', '', '', '', 'Y', 'Y', 'W'],
+  ['Z', 'G', 'P', '', '', '', 'Y', 'Y', 'W'],
+  ['Z', '', '', 'Y', '', '', 'Y', 'Y', 'W']
+];
+
 // Level 20
 var floor20 = [
-  ['S', 'O', 'O', 'ES', 'ESW', 'ESW', 'ESW', 'ESW', 'SW', 'S', 'S', 'S'],
+  ['S', '', '', 'ES', 'ESW', 'ESW', 'ESW', 'ESW', 'SW', 'S', 'S', 'S'],
   ['NES', 'ESW', 'ESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW'],
   ['NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW'],
   ['NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW'],
   ['NES', 'NEW', 'NEW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW'],
-  ['N', 'O', 'O', 'NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NW', 'N', 'N', 'N']
+  ['N', '', '', 'NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NW', 'N', 'N', 'N']
 ];
 var item20 = [
   ['Y', '', '', 'Y', '', 'Y', '', '', 'Z', 'W', 'Z', 'W'],
-  ['B', '', '', '', '', 'Y', '', '', '', 'Y', '', 'Y'],
-  ['O', '', '', '', '', 'Y', '', '', '', '', '', ''],
-  ['G', '', '', '', '', 'Y', '', '', '', '', '', ''],
-  ['P', '', '', '', '', 'Y', '', '', '', 'Y', '', 'Y'],
+  ['', 'B', '', '', '', 'Y', '', '', '', 'Y', '', 'Y'],
+  ['', 'O', '', '', '', 'Y', '', '', '', '', '', ''],
+  ['', 'G', '', '', '', 'Y', '', '', '', '', '', ''],
+  ['', 'P', '', '', '', 'Y', '', '', '', 'Y', '', 'Y'],
   ['Y', '', '', 'Y', '', 'Y', '', '', 'Z', 'W', 'Z', 'W']
+];
+
+// Level 21
+var floor21 = [
+  ['E', 'EW', 'EW', 'EW', 'EW', 'W', ''],
+  ['', 'E', 'EW', 'EW', 'EW', 'EW', 'W']
+];
+var item21 = [
+  ['B', '', '', '', '', 'T', ''],
+  ['', 'T', '', '', '', '', 'W']
+];
+
+// Level 22
+var floor22 = [
+  ['ES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW'],
+  ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW']
+];
+var item22 = [
+  ['B', '', '', 'W', 'Z', '', '', '', '', 'Z'],
+  ['O', '', 'T', '', 'Z', 'W', '', '', 'T', 'Z']
+];
+
+// Level 23
+var floor23 = [
+  ['', 'E', 'EW', 'EW', 'ESW', 'SW', '', '', 'ES', 'ESW', 'SW'],
+  ['', '', '', '', 'NES', 'NESW', 'SW', 'ES', 'NESW', 'NESW', 'NSW'],
+  ['E', 'EW', 'EW', 'EW', 'NESW', 'NESW', 'NSW', 'NES', 'NESW', 'NESW', 'NSW'],
+  ['', '', '', '', 'NES', 'NESW', 'NW', 'NE', 'NESW', 'NESW', 'NSW'],
+  ['', 'E', 'EW', 'EW', 'NEW', 'NW', '', '', 'NE', 'NEW', 'NW'],
+];
+var item23 = [
+  ['', 'W', '', '', '', 'Z', '', '', 'Z', 'Z', 'Z'],
+  ['', '', '', '', '', '', 'Z', 'Z', '', '', ''],
+  ['Z', 'B', 'O', 'G', '', 'T', 'Z', 'W', '', 'Z', 'T'],
+  ['', '', '', '', '', '', 'Z', 'Z', '', '', ''],
+  ['', 'W', '', '', '', 'Z', '', '', 'Z', 'Z', 'Z']
+];
+
+// Level 24
+var floor24 = [
+  ['ES', 'SW', 'ES', 'ESW', 'ESW', 'ESW', 'SW', 'ES', 'W', '', ''],
+  ['NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW', 'NS', 'ES', 'ESW', 'SW'],
+  ['NES', 'NSW', 'NES', 'NESW', 'NESW', 'NESW', 'NSW', 'NS', 'NES', 'NESW', 'NSW'],
+  ['NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW', 'NE', 'NEW', 'NEW', 'NW'],
+  ['NE', 'NW', 'NE', 'NEW', 'NEW', 'NEW', 'NW', '', '', '', ''],
+  ['', '', '', 'ES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW'],
+  ['', '', '', 'NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW'],
+  ['', '', '', 'NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW']
+];
+var item24 = [
+  ['', '', '', '', '', '', '', '', 'W', '', ''],
+  ['B', '', '', '', '', 'Z', 'W', '', 'Z', 'Z', 'Z'],
+  ['O', '', '', 'Z', '', '', 'W', '', '', '', 'T'],
+  ['G', '', '', '', '', 'Z', 'W', '', '', 'Z', 'Z'],
+  ['', '', '', '', '', '', '', '', '', '', ''],
+  ['', '', '', '', '', '', '', '', '', 'Z', 'Z'],
+  ['', '', '', 'P', '', '', 'Z', '', '', '', 'T'],
+  ['', '', '', '', '', '', 'Z', '', '', '', 'Z']
+];
+
+// Level 25
+var floor25 = [
+  ['', 'ES', 'ESW', 'SW', 'S', 'ES', 'ESW', 'SW'],
+  ['E', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW'],
+  ['', 'NE', 'NEW', 'NW', 'N', 'NE', 'NEW', 'NW']
+];
+var item25 = [
+  ['', 'B', '', '', 'Z', 'W', 'Y', 'Z'],
+  ['T', 'Y', '', '', '', 'Y', '', 'T'],
+  ['', 'O', '', '', 'Z', 'W', 'Y', 'Z']
 ];
 
 // Level loading
@@ -291,7 +371,12 @@ floorList = [
   floor17,
   floor18,
   floor19,
-  floor20
+  floor20,
+  floor21,
+  floor22,
+  floor23,
+  floor24,
+  floor25
 ];
 itemList = [
   item1,
@@ -313,30 +398,15 @@ itemList = [
   item17,
   item18,
   item19,
-  item20
+  item20,
+  item21,
+  item22,
+  item23,
+  item24,
+  item25
 ];
-completionList = [
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false
-];
+
+completionList = Array(floorList.length).fill(false);
 replicaList = [];
 goalList = [];
 zapOnList = [];

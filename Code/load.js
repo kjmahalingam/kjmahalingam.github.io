@@ -40,6 +40,9 @@ var loadState = {
     game.load.audio('ZapOn', 'Audio/ZapOn.mp3');
     game.load.audio('ZapOff', 'Audio/ZapOff.mp3');
     game.load.audio('Portal', 'Audio/Portal.mp3');
+
+    // Other setup
+    game.stage.smoothed = false;
   },
 
   // Automatically called
