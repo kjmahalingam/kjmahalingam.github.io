@@ -527,10 +527,10 @@ function loadLevel() {
     for (var j = 0; j < rows; j++) {
       if (landscape) {
         var xpos = (game.width * 0.5) + (((i + 0.5) - (cols / 2)) * tileWidth);
-        var ypos = (game.height * 0.45) + (((j + 0.5) - (rows / 2)) * tileHeight);
+        var ypos = (game.height * 0.425) + (((j + 0.5) - (rows / 2)) * tileHeight);
       } else {
         var xpos = (game.width * 0.5) + (((j + 0.5) - (rows / 2)) * tileHeight);
-        var ypos = (game.height * 0.45) - (((i + 0.5) - (cols / 2)) * tileWidth);
+        var ypos = (game.height * 0.425) - (((i + 0.5) - (cols / 2)) * tileWidth);
       }
       var floor = new Floor(xpos, ypos, i, j, tileWidth, tileHeight, floorList[levelIndex][j][i]);
       floor.show();
