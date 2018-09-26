@@ -45,7 +45,7 @@ var loadState = {
     game.load.audio('Unlock', 'Audio/Unlock.mp3');
 
     // Other setup
-    game.stage.smoothed = false;
+    game.stage.smoothed = true;
   },
 
   // Automatically called
