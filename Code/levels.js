@@ -40,14 +40,20 @@ var item3 = [
 
 // Level 4
 var floor4 = [
-  ['', '', 'ES', 'ESW', 'SW', '', ''],
-  ['E', 'EW', 'NESW', 'NESW', 'NESW', 'EW', 'W'],
-  ['', '', 'NE', 'NEW', 'NW', '', '']
+  ['', '', 'ES', 'ESW', 'ESW', 'SW', '', ''],
+  ['E', 'EW', 'NESW', 'NESW', 'NESW', 'NESW', 'EW', 'W'],
+  ['', '', 'NE', 'NEW', 'NEW', 'NW', '', ''],
+  ['', '', 'ES', 'ESW', 'ESW', 'SW', '', ''],
+  ['E', 'EW', 'NESW', 'NESW', 'NESW', 'NESW', 'EW', 'W'],
+  ['', '', 'NE', 'NEW', 'NEW', 'NW', '', '']
 ];
 var item4 = [
-  ['', '', '', '', '', '', ''],
-  ['B', '', '', 'Z', '', '', 'W'],
-  ['', '', '', '', '', '', '']
+  ['', '', '', '', '', '', '', ''],
+  ['B', '', '', 'Z', '', '', '', 'W'],
+  ['', '', '', '', '', '', '', ''],
+  ['', '', '', '', '', '', '', ''],
+  ['O', '', '', '', 'Z', '', '', 'W'],
+  ['', '', '', '', '', '', '', '']
 ];
 
 // Level 5
@@ -400,22 +406,6 @@ var item28 = [
 
 // Level 29
 var floor29 = [
-  ['E', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW', ''],
-  ['', 'NES', 'NESW', 'NESW', 'NESW', 'NSW', 'N', ''],
-  ['E', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'EW', 'W'],
-  ['', 'NES', 'NESW', 'NESW', 'NESW', 'NSW', 'S', ''],
-  ['E', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW', '']
-];
-var item29 = [
-  ['Z', 'B', '', 'Y', '', '', '', ''],
-  ['', 'Y', '', 'Y', 'Y', 'Y', 'W', ''],
-  ['W', 'O', 'Y', 'T', '', '', 'T', 'Z'],
-  ['', 'Y', '', 'Y', 'Y', 'Y', 'W', ''],
-  ['Z', 'G', '', 'Y', '', '', '', '']
-];
-
-// Level 30
-var floor30 = [
   ['ES', 'ESW', 'ESW', 'ESW', 'ESW', 'SW', '', ''],
   ['NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'SW', ''],
   ['NE', 'NEW', 'NEW', 'NEW', 'NESW', 'NESW', 'NSW', ''],
@@ -425,7 +415,7 @@ var floor30 = [
   ['', 'NE', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW'],
   ['', '', 'NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NW']
 ];
-var item30 = [
+var item29 = [
   ['', '', 'Y', '', '', '', '', ''],
   ['T', 'B', 'Y', '', 'Y', '', 'Z', ''],
   ['', '', 'Y', '', '', '', 'W', ''],
@@ -436,72 +426,185 @@ var item30 = [
   ['', '', 'P', '', '', 'Y', '', 'W']
 ];
 
+// Level 30
+var floor30 = [
+  ['E', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW', ''],
+  ['', 'NES', 'NESW', 'NESW', 'NESW', 'NSW', 'N', ''],
+  ['E', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'EW', 'W'],
+  ['', 'NES', 'NESW', 'NESW', 'NESW', 'NSW', 'S', ''],
+  ['E', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW', '']
+];
+var item30 = [
+  ['Z', 'B', '', 'Y', '', '', '', ''],
+  ['', 'Y', '', 'Y', 'Y', 'Y', 'W', ''],
+  ['W', 'O', 'Y', 'T', '', '', 'T', 'Z'],
+  ['', 'Y', '', 'Y', 'Y', 'Y', 'W', ''],
+  ['Z', 'G', '', 'Y', '', '', '', '']
+];
+
+// Level 31
+var floor31 = [
+  ['', '', 'ES', 'ESW', 'SW', '', ''],
+  ['E', 'EW', 'NESW', 'NESW', 'NESW', 'EW', 'W'],
+  ['', '', 'NE', 'NEW', 'NW', '', ''],
+  ['', 'E', 'EW', 'EW', 'EW', 'W', '']
+];
+var item31 = [
+  ['', '', '', '', '', '', ''],
+  ['B', '', '', 'W', 'K', 'K', 'K'],
+  ['', '', '', '', '', '', ''],
+  ['', 'O', '', '', 'L', 'W', '']
+];
+
+// Level 32
+var floor32 = [
+  ['ES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW'],
+  ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW'],
+  ['ES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW'],
+  ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW']
+];
+var item32 = [
+  ['Z', '', '', '', 'K', '', '', 'L'],
+  ['Z', '', '', 'B', 'L', '', 'L', 'W'],
+  ['W', 'L', '', 'L', 'O', '', '', 'Z'],
+  ['L', '', '', 'K', '', '', '', 'Z']
+];
+
+// Level 33
+var floor33 = [
+  ['ES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW', 'S'],
+  ['NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW'],
+  ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW', 'N'],
+  ['ES', 'ESW', 'ESW', 'ESW', 'ESW', 'ESW', 'SW', 'S'],
+  ['NES', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NESW', 'NSW'],
+  ['NE', 'NEW', 'NEW', 'NEW', 'NEW', 'NEW', 'NW', 'N']
+];
+var item33 = [
+  ['Z', '', '', '', '', '', 'Z', 'Z'],
+  ['K', '', '', 'B', '', '', '', 'L'],
+  ['Z', '', '', 'L', '', '', 'Z', 'W'],
+  ['Z', '', '', 'L', '', '', 'Z', 'W'],
+  ['K', '', '', 'O', '', '', '', 'L'],
+  ['Z', '', '', '', '', '', 'Z', 'Z']
+];
+
+// Level 34
+var floor34 = [
+  ['ES', 'ESW', 'ESW', 'SW', 'ES', 'ESW', 'ESW', 'SW'],
+  ['NES', 'NESW', 'NEW', 'NSW', 'NES', 'NEW', 'NESW', 'NSW'],
+  ['NES', 'NSW', '', 'NS', 'NS', '', 'NES', 'NSW'],
+  ['NE', 'NEW', 'EW', 'NW', 'NE', 'EW', 'NEW', 'NW'],
+  ['ES', 'ESW', 'EW', 'SW', 'ES', 'EW', 'ESW', 'SW'],
+  ['NES', 'NSW', '', 'NS', 'NS', '', 'NES', 'NSW'],
+  ['NES', 'NESW', 'ESW', 'NSW', 'NES', 'ESW', 'NESW', 'NSW'],
+  ['NE', 'NEW', 'NEW', 'NW', 'NE', 'NEW', 'NEW', 'NW']
+];
+var item34 = [
+  ['W', 'L', 'Z', '', '', 'Z', 'L', 'W'],
+  ['L', 'K', '', '', '', '', 'K', 'L'],
+  ['Z', '', '', '', '', '', '', 'Z'],
+  ['', '', '', 'B', 'O', '', '', ''],
+  ['', '', '', 'G', 'P', '', '', ''],
+  ['Z', '', '', '', '', '', '', 'Z'],
+  ['L', 'K', '', '', '', '', 'K', 'L'],
+  ['W', 'L', 'Z', '', '', 'Z', 'L', 'W']
+];
+
+// Level 35
+var floor35 = [
+  ['ES', 'ESW', 'ESW', 'ESW', 'SW', 'S', 'ES', 'ESW', 'ESW', 'ESW', 'SW'],
+  ['NES', 'NESW', 'NESW', 'NESW', 'NSW', 'NS', 'NES', 'NESW', 'NESW', 'NESW', 'NSW'],
+  ['NES', 'NESW', 'NESW', 'NESW', 'NSW', 'NS', 'NES', 'NESW', 'NESW', 'NESW', 'NSW'],
+  ['NES', 'NESW', 'NESW', 'NESW', 'NSW', 'NS', 'NES', 'NESW', 'NESW', 'NESW', 'NSW'],
+  ['NE', 'NEW', 'NEW', 'NEW', 'NW', 'NS', 'NE', 'NEW', 'NEW', 'NEW', 'NW'],
+  ['', '', 'E', 'EW', 'EW', 'NEW', 'EW', 'EW', 'W', '', '']
+];
+var item35 = [
+  ['', '', '', '', 'K', 'W', 'K', '', '', '', ''],
+  ['', 'Z', '', '', '', 'L', '', '', '', 'Z', ''],
+  ['K', 'B', '', '', 'W', 'Y', 'W', '', '', 'O', 'K'],
+  ['', '', '', '', '', '', '', '', '', '', ''],
+  ['', '', '', '', 'K', '', 'K', '', '', '', ''],
+  ['', '', '', 'Y', '', 'G', '', 'Y', '', '', '']
+];
+
 // Level loading
 levelIndex = 0;
 floorList = [
-  floor1,
-  floor2,
+  // floor1,
+  // floor2,
   floor3,
   floor4,
   floor5,
   floor6,
   floor7,
   floor8,
-  floor9,
+  // floor9,
   floor10,
   floor11,
-  floor12,
+  // floor12,
   floor13,
   floor14,
-  floor15,
-  floor16,
-  floor17,
+  // floor15,
+  // floor16,
+  // floor17,
   floor18,
-  floor19,
-  floor20,
+  // floor19,
+  // floor20,
   floor21,
   floor22,
-  floor23,
-  floor24,
-  floor25,
+  // floor23,
+  // floor24,
   floor26,
   floor27,
-  floor28,
-  floor29,
-  floor30
+  floor25,
+  // floor28,
+  // floor29,
+  // floor30,
+  floor31,
+  floor32,
+  floor33,
+  // floor34,
+  floor35
 ];
 
 itemList = [
-  item1,
-  item2,
+  // item1,
+  // item2,
   item3,
   item4,
   item5,
   item6,
   item7,
   item8,
-  item9,
+  // item9,
   item10,
   item11,
-  item12,
+  // item12,
   item13,
   item14,
-  item15,
-  item16,
-  item17,
+  // item15,
+  // item16,
+  // item17,
   item18,
-  item19,
-  item20,
+  // item19,
+  // item20,
   item21,
   item22,
-  item23,
-  item24,
-  item25,
+  // item23,
+  // item24,
+  // item25,
   item26,
   item27,
-  item28,
-  item29,
-  item30
+  item25,
+  // item28,
+  // item29,
+  // item30,
+  item31,
+  item32,
+  item33,
+  // item34,
+  item35
 ];
 
 completionList = Array(floorList.length).fill(false);
@@ -510,7 +613,10 @@ goalList = [];
 zapOnList = [];
 zapOffList = [];
 portalList = [];
+keyList = [];
+lockList = [];
 blockedList = [];
+
 function loadLevel() {
   // Scale and draw grid
   var cols = floorList[levelIndex][0].length;
@@ -551,6 +657,12 @@ function loadLevel() {
         else if (item.type === 'T') {
           portalList.push(item);
         }
+        else if (item.type === 'K') {
+          keyList.push(item);
+        }
+        else if (item.type === 'L') {
+          lockList.push(item);
+        }
       }
     }
   }
@@ -559,6 +671,12 @@ function loadLevel() {
   }
   for (i = 0; i < portalList.length; i++) {
     portalList[i].show();
+  }
+  for (i = 0; i < keyList.length; i++) {
+    keyList[i].show();
+  }
+  for (i = 0; i < lockList.length; i++) {
+    lockList[i].show();
   }
   for (i = 0; i < zapOffList.length; i++) {
     zapOffList[i].show();
@@ -570,21 +688,26 @@ function loadLevel() {
     goalList[i].show();
   }
 }
+
 function nextLevel() {
   levelIndex = (levelIndex + 1) % completionList.length;
 }
+
 function previousLevel() {
   levelIndex = levelIndex - 1;
   if (levelIndex < 0) {
     levelIndex = completionList.length - 1;
   }
 }
+
 function resetLevel() {
   replicaList = [];
   goalList = [];
   zapOnList = [];
   zapOffList = [];
   portalList = [];
+  keyList = [];
+  lockList = [];
   blockedList = [];
   game.state.start('play');
 }

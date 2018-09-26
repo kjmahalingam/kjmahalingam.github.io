@@ -21,6 +21,8 @@ function Item(x_, y_, col_, row_, width_, height_, type_) {
     typeMap['T'] = 'Portal';
     typeMap['Z'] = 'ZapOn';
     typeMap['Y'] = 'ZapOff';
+    typeMap['K'] = 'Key';
+    typeMap['L'] = 'Lock';
 
     this.sprite = game.add.sprite(this.x, this.y, typeMap[this.type]);
     this.sprite.anchor.setTo(0.5, 0.5);

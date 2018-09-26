@@ -32,6 +32,8 @@ var loadState = {
     game.load.image('Portal', 'Sprites/Portal.png');
     game.load.image('ZapOn', 'Sprites/ZapOn.png');
     game.load.image('ZapOff', 'Sprites/ZapOff.png');
+    game.load.image('Key', 'Sprites/Key.png');
+    game.load.image('Lock', 'Sprites/Lock.png');
 
     // Load audio
     game.load.audio('Replica', 'Audio/Replica.mp3');
@@ -40,6 +42,7 @@ var loadState = {
     game.load.audio('ZapOn', 'Audio/ZapOn.mp3');
     game.load.audio('ZapOff', 'Audio/ZapOff.mp3');
     game.load.audio('Portal', 'Audio/Portal.mp3');
+    game.load.audio('Unlock', 'Audio/Unlock.mp3');
 
     // Other setup
     game.stage.smoothed = false;

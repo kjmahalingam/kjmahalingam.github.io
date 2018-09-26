@@ -54,6 +54,8 @@ var playState = {
     zapOffSound = game.add.audio("ZapOff");
     zapOffSound.volume = 0.6;
     portalSound = game.add.audio("Portal");
+    unlockSound = game.add.audio("Unlock");
+    unlockSound.volume = 0.6;
     setTimeout(setLoaded, 500);
   },
   // Called every frame
@@ -66,6 +68,7 @@ function moveNorth() {
     ready = false;
     setTimeout(setReady, 200);
     replicaList.sort(function(a, b){return b.row-a.row});
+    var unlocked = false;
     for (i = replicaList.length - 1; i >= 0; i--) {
       if (!replicaList[i].finished) {
         var row = replicaList[i].row;
@@ -79,6 +82,12 @@ function moveNorth() {
                   occupied = true;
                   break;
                 }
+              }
+            }
+            for (j = lockList.length - 1; j >= 0; j--) {
+              if ((lockList[j].row === row - 1) && (lockList[j].col === col)) {
+                occupied = true;
+                break;
               }
             }
             for (j = blockedList.length - 1; j >= 0; j--) {
@@ -114,6 +123,22 @@ function moveNorth() {
                 }
               }
               if (replicaList[i]) {
+                for (j = keyList.length - 1; j >= 0; j--) {
+                  if ((keyList[j].row === replicaList[i].row) && (keyList[j].col === replicaList[i].col)) {
+                    game.add.tween(keyList[j].sprite).to({width: 0, height: 0}, 1000, Phaser.Easing.Exponential.Out, true, 200);
+                    game.add.tween(keyList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Exponential.Out, true, 200);
+                    keyList.splice(j, 1);
+                    if (keyList.length === 0) {
+                      unlocked = true;
+                    }
+                    setTimeout(function() {
+                      unlockSound.play();
+                    }, 200);
+                    break;
+                  }
+                }
+              }
+              if (replicaList[i]) {
                 for (j = zapOffList.length - 1; j >= 0; j--) {
                   if ((zapOffList[j].row === replicaList[i].row) && (zapOffList[j].col === replicaList[i].col)) {
                     // Create new zapOn and remove zapOff
@@ -150,6 +175,13 @@ function moveNorth() {
         }
       }
     }
+    if (unlocked) {
+      for (i = lockList.length - 1; i >= 0; i--) {
+        game.add.tween(lockList[i].sprite).to({width: 0, height: 0}, 1000, Phaser.Easing.Exponential.Out, true, 200);
+        game.add.tween(lockList[i].sprite).to({alpha: 0}, 1000, Phaser.Easing.Exponential.Out, true, 200);
+        lockList.splice(i, 1);
+      }
+    }
   }
 }
 
@@ -158,6 +190,7 @@ function moveSouth() {
     ready = false;
     setTimeout(setReady, 200);
     replicaList.sort(function(a, b){return a.row-b.row});
+    var unlocked = false;
     for (i = replicaList.length - 1; i >= 0; i--) {
       if (!replicaList[i].finished) {
         var row = replicaList[i].row;
@@ -171,6 +204,12 @@ function moveSouth() {
                   occupied = true;
                   break;
                 }
+              }
+            }
+            for (j = lockList.length - 1; j >= 0; j--) {
+              if ((lockList[j].row === row + 1) && (lockList[j].col === col)) {
+                occupied = true;
+                break;
               }
             }
             for (j = blockedList.length - 1; j >= 0; j--) {
@@ -206,6 +245,22 @@ function moveSouth() {
                 }
               }
               if (replicaList[i]) {
+                for (j = keyList.length - 1; j >= 0; j--) {
+                  if ((keyList[j].row === replicaList[i].row) && (keyList[j].col === replicaList[i].col)) {
+                    game.add.tween(keyList[j].sprite).to({width: 0, height: 0}, 1000, Phaser.Easing.Exponential.Out, true, 200);
+                    game.add.tween(keyList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Exponential.Out, true, 200);
+                    keyList.splice(j, 1);
+                    if (keyList.length === 0) {
+                      unlocked = true;
+                    }
+                    setTimeout(function() {
+                      unlockSound.play();
+                    }, 200);
+                    break;
+                  }
+                }
+              }
+              if (replicaList[i]) {
                 for (j = zapOffList.length - 1; j >= 0; j--) {
                   if ((zapOffList[j].row === replicaList[i].row) && (zapOffList[j].col === replicaList[i].col)) {
                     // Create new zapOn and remove zapOff
@@ -242,6 +297,13 @@ function moveSouth() {
         }
       }
     }
+    if (unlocked) {
+      for (i = lockList.length - 1; i >= 0; i--) {
+        game.add.tween(lockList[i].sprite).to({width: 0, height: 0}, 1000, Phaser.Easing.Exponential.Out, true, 200);
+        game.add.tween(lockList[i].sprite).to({alpha: 0}, 1000, Phaser.Easing.Exponential.Out, true, 200);
+        lockList.splice(i, 1);
+      }
+    }
   }
 }
 
@@ -250,6 +312,7 @@ function moveWest() {
     ready = false;
     setTimeout(setReady, 200);
     replicaList.sort(function(a, b){return b.col-a.col});
+    var unlocked = false;
     for (i = replicaList.length - 1; i >= 0; i--) {
       if (!replicaList[i].finished) {
         var row = replicaList[i].row;
@@ -263,6 +326,12 @@ function moveWest() {
                   occupied = true;
                   break;
                 }
+              }
+            }
+            for (j = lockList.length - 1; j >= 0; j--) {
+              if ((lockList[j].row === row) && (lockList[j].col === col - 1)) {
+                occupied = true;
+                break;
               }
             }
             for (j = blockedList.length - 1; j >= 0; j--) {
@@ -298,6 +367,22 @@ function moveWest() {
                 }
               }
               if (replicaList[i]) {
+                for (j = keyList.length - 1; j >= 0; j--) {
+                  if ((keyList[j].row === replicaList[i].row) && (keyList[j].col === replicaList[i].col)) {
+                    game.add.tween(keyList[j].sprite).to({width: 0, height: 0}, 1000, Phaser.Easing.Exponential.Out, true, 200);
+                    game.add.tween(keyList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Exponential.Out, true, 200);
+                    keyList.splice(j, 1);
+                    if (keyList.length === 0) {
+                      unlocked = true;
+                    }
+                    setTimeout(function() {
+                      unlockSound.play();
+                    }, 200);
+                    break;
+                  }
+                }
+              }
+              if (replicaList[i]) {
                 for (j = zapOffList.length - 1; j >= 0; j--) {
                   if ((zapOffList[j].row === replicaList[i].row) && (zapOffList[j].col === replicaList[i].col)) {
                     // Create new zapOn and remove zapOff
@@ -334,6 +419,13 @@ function moveWest() {
         }
       }
     }
+    if (unlocked) {
+      for (i = lockList.length - 1; i >= 0; i--) {
+        game.add.tween(lockList[i].sprite).to({width: 0, height: 0}, 1000, Phaser.Easing.Exponential.Out, true, 200);
+        game.add.tween(lockList[i].sprite).to({alpha: 0}, 1000, Phaser.Easing.Exponential.Out, true, 200);
+        lockList.splice(i, 1);
+      }
+    }
   }
 }
 
@@ -342,6 +434,7 @@ function moveEast() {
     ready = false;
     setTimeout(setReady, 200);
     replicaList.sort(function(a, b){return a.col-b.col});
+    var unlocked = false;
     for (i = replicaList.length - 1; i >= 0; i--) {
       if (!replicaList[i].finished) {
         var row = replicaList[i].row;
@@ -355,6 +448,12 @@ function moveEast() {
                   occupied = true;
                   break;
                 }
+              }
+            }
+            for (j = lockList.length - 1; j >= 0; j--) {
+              if ((lockList[j].row === row) && (lockList[j].col === col + 1)) {
+                occupied = true;
+                break;
               }
             }
             for (j = blockedList.length - 1; j >= 0; j--) {
@@ -384,6 +483,22 @@ function moveEast() {
                     teleport(replicaList, portalList, i, j);
                     setTimeout(function() {
                       portalSound.play();
+                    }, 200);
+                    break;
+                  }
+                }
+              }
+              if (replicaList[i]) {
+                for (j = keyList.length - 1; j >= 0; j--) {
+                  if ((keyList[j].row === replicaList[i].row) && (keyList[j].col === replicaList[i].col)) {
+                    game.add.tween(keyList[j].sprite).to({width: 0, height: 0}, 1000, Phaser.Easing.Exponential.Out, true, 200);
+                    game.add.tween(keyList[j].sprite).to({alpha: 0}, 1000, Phaser.Easing.Exponential.Out, true, 200);
+                    keyList.splice(j, 1);
+                    if (keyList.length === 0) {
+                      unlocked = true;
+                    }
+                    setTimeout(function() {
+                      unlockSound.play();
                     }, 200);
                     break;
                   }
@@ -424,6 +539,13 @@ function moveEast() {
             }
           }
         }
+      }
+    }
+    if (unlocked) {
+      for (i = lockList.length - 1; i >= 0; i--) {
+        game.add.tween(lockList[i].sprite).to({width: 0, height: 0}, 1000, Phaser.Easing.Exponential.Out, true, 200);
+        game.add.tween(lockList[i].sprite).to({alpha: 0}, 1000, Phaser.Easing.Exponential.Out, true, 200);
+        lockList.splice(i, 1);
       }
     }
   }
