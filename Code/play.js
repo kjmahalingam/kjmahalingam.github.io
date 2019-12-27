@@ -642,6 +642,7 @@ function nextProcess() {
       playState.camera.fade('#646464', 500, true);
       setTimeout(function() {
         completionList[levelIndex] = true;
+        storeCompletion();
         setReady();
         nextLevel();
         resetLevel();
