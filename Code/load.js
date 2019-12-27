@@ -18,6 +18,9 @@ var loadState = {
     game.load.image('FloorNSW', 'Sprites/FloorNSW.png');
     game.load.image('FloorESW', 'Sprites/FloorESW.png');
     game.load.image('FloorNESW', 'Sprites/FloorNESW.png');
+    game.load.image('PipeEW', 'Sprites/PipeEW.png');
+    game.load.image('PipeNS', 'Sprites/PipeNS.png');
+    game.load.image('PipeNESW', 'Sprites/PipeNESW.png');
     game.load.image('Wall', 'Sprites/Wall.png');
     game.load.image('Reset', 'Sprites/Reset.png');
     game.load.image('Next', 'Sprites/Next.png');
@@ -36,13 +39,13 @@ var loadState = {
     game.load.image('Lock', 'Sprites/Lock.png');
 
     // Load audio
-    game.load.audio('Replica', 'Audio/Replica.mp3');
     game.load.audio('Goal', 'Audio/Goal.mp3');
     game.load.audio('Win', 'Audio/Win.mp3');
     game.load.audio('ZapOn', 'Audio/ZapOn.mp3');
     game.load.audio('ZapOff', 'Audio/ZapOff.mp3');
     game.load.audio('Portal', 'Audio/Portal.mp3');
     game.load.audio('Unlock', 'Audio/Unlock.mp3');
+    game.load.audio('Replica', ['Audio/Replica.ogg', 'Audio/Replica.mp3']);
 
     // Other setup
     game.stage.smoothed = true;

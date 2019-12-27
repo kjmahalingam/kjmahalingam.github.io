@@ -1,7 +1,6 @@
 // Initialize game
 game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.CANVAS, '');
-var startLevel = getStartLevel();
-setStartLevel(startLevel);
+setStartLevel();
 
 // Add game states
 game.state.add('boot', bootState);
@@ -12,22 +11,11 @@ game.state.add('play', playState);
 // Start boot state
 game.state.start('boot');
 
-// Get starting level
-function getStartLevel() {
+function setStartLevel() {
   var query = window.location.search.substring(1);
-  var vars = query.split("&");
-  for (var i = 0;i < vars.length; i++) {
-    var pair = vars[i].split("=");
-    if(pair[0] == "level"){
-      return pair[1];
-    }
+  if (query === 'clear') {
+    completionList.fill(false);
   }
-  return(1);
-}
-
-function setStartLevel(level) {
-  for (var i = 0; i < level - 1; i++) {
-    completionList[i] = true;
-  }
-  levelIndex = level - 1;
+  var foundIndex = completionList.findIndex(l => !l);
+  levelIndex = (foundIndex !== -1) ? foundIndex : 1;
 }

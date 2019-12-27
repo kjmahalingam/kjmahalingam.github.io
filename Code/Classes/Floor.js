@@ -12,6 +12,7 @@ function Floor(x_, y_, col_, row_, width_, height_, type_) {
   this.east = (this.type.indexOf('E') > 0);
   this.south = (this.type.indexOf('S') > 0);
   this.west = (this.type.indexOf('W') > 0);
+  this.pipe = (this.type.indexOf('P') > 0);
 
   // Draw floor
   this.show = function() {
@@ -31,6 +32,9 @@ function Floor(x_, y_, col_, row_, width_, height_, type_) {
     typeMap['NSW'] = 'FloorNSW';
     typeMap['ESW'] = 'FloorESW';
     typeMap['NESW'] = 'FloorNESW';
+    typeMap['PEW'] = 'PipeEW';
+    typeMap['PNS'] = 'PipeNS';
+    typeMap['PNESW'] = 'PipeNESW';
     typeMap['O'] = 'Wall';
 
     this.sprite = game.add.sprite(this.x, this.y, typeMap[this.type]);

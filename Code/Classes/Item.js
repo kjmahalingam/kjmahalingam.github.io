@@ -31,54 +31,54 @@ function Item(x_, y_, col_, row_, width_, height_, type_) {
   }
 
   // Move replica item
-  this.move = function(dir) {
+  this.move = function(dir, scale = 1) {
     if (['B', 'O', 'G', 'P'].includes(this.type)) {
       switch (dir) {
         case "N":
-          this.row--;
+          this.row -= scale;
           game.add.tween(this.sprite).to({width: this.width / 4, height: this.height / 4}, 50, Phaser.Easing.Linear.None, true);
           if (landscape) {
-            this.y -= this.height;
-            game.add.tween(this.sprite).to({y: this.sprite.y - this.height}, 100, Phaser.Easing.Linear.None, true, 50);
+            this.y -= scale * this.height;
+            game.add.tween(this.sprite).to({y: this.sprite.y - scale * this.height}, 100, Phaser.Easing.Linear.None, true, 50);
           } else {
-            this.x -= this.width;
-            game.add.tween(this.sprite).to({x: this.sprite.x - this.width}, 100, Phaser.Easing.Linear.None, true, 50);
+            this.x -= scale * this.width;
+            game.add.tween(this.sprite).to({x: this.sprite.x - scale * this.width}, 100, Phaser.Easing.Linear.None, true, 50);
           }
           game.add.tween(this.sprite).to({width: this.width, height: this.height}, 50, Phaser.Easing.Linear.None, true, 150);
           break;
         case "E":
-          this.col++;
+          this.col += scale;
           game.add.tween(this.sprite).to({width: this.width / 4, height: this.height / 4}, 50, Phaser.Easing.Linear.None, true);
           if (landscape) {
-            this.x += this.width;
-            game.add.tween(this.sprite).to({x: this.sprite.x + this.width}, 100, Phaser.Easing.Linear.None, true, 50);
+            this.x += scale * this.width;
+            game.add.tween(this.sprite).to({x: this.sprite.x + scale * this.width}, 100, Phaser.Easing.Linear.None, true, 50);
           } else {
-            this.y -= this.height;
-            game.add.tween(this.sprite).to({y: this.sprite.y - this.height}, 100, Phaser.Easing.Linear.None, true, 50);
+            this.y -= scale * this.height;
+            game.add.tween(this.sprite).to({y: this.sprite.y - scale * this.height}, 100, Phaser.Easing.Linear.None, true, 50);
           }
           game.add.tween(this.sprite).to({width: this.width, height: this.height}, 50, Phaser.Easing.Linear.None, true, 150);
           break;
         case "S":
-          this.row++;
+          this.row += scale;
           game.add.tween(this.sprite).to({width: this.width / 4, height: this.height / 4}, 50, Phaser.Easing.Linear.None, true);
           if (landscape) {
-            this.y += this.height;
-            game.add.tween(this.sprite).to({y: this.sprite.y + this.height}, 100, Phaser.Easing.Linear.None, true, 50);
+            this.y += scale * this.height;
+            game.add.tween(this.sprite).to({y: this.sprite.y + scale * this.height}, 100, Phaser.Easing.Linear.None, true, 50);
           } else {
-            this.x += this.width;
-            game.add.tween(this.sprite).to({x: this.sprite.x + this.width}, 100, Phaser.Easing.Linear.None, true, 50);
+            this.x += scale * this.width;
+            game.add.tween(this.sprite).to({x: this.sprite.x + scale * this.width}, 100, Phaser.Easing.Linear.None, true, 50);
           }
           game.add.tween(this.sprite).to({width: this.width, height: this.height}, 50, Phaser.Easing.Linear.None, true, 150);
           break;
         case "W":
-          this.col--;
+          this.col -= scale;
           game.add.tween(this.sprite).to({width: this.width / 4, height: this.height / 4}, 50, Phaser.Easing.Linear.None, true);
           if (landscape) {
-            this.x -= this.width;
-            game.add.tween(this.sprite).to({x: this.sprite.x - this.width}, 100, Phaser.Easing.Linear.None, true, 50);
+            this.x -= scale * this.width;
+            game.add.tween(this.sprite).to({x: this.sprite.x - scale * this.width}, 100, Phaser.Easing.Linear.None, true, 50);
           } else {
-            this.y += this.height;
-            game.add.tween(this.sprite).to({y: this.sprite.y + this.height}, 100, Phaser.Easing.Linear.None, true, 50);
+            this.y += scale * this.height;
+            game.add.tween(this.sprite).to({y: this.sprite.y + scale * this.height}, 100, Phaser.Easing.Linear.None, true, 50);
           }
           game.add.tween(this.sprite).to({width: this.width, height: this.height}, 50, Phaser.Easing.Linear.None, true, 150);
           break;

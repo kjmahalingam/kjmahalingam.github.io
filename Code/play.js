@@ -33,21 +33,32 @@ var playState = {
     loadLevel();
     this.camera.flash('#DDDDDD', 500, true);
     minDimension = Math.min(game.width, game.height);
-    resetButton = game.add.sprite(game.width * 0.5, game.height * 0.9, 'Reset');
+    resetButton = game.add.sprite(game.width * 0.5, game.height * 0.95, 'Reset');
     resetButton.anchor.setTo(0.5, 0.5);
-    resetButton.width = resetButton.height = minDimension * 0.25;
+    resetButton.width = resetButton.height = minDimension * 0.15;
     resetButton.inputEnabled = true;
     resetButton.events.onInputDown.add(resetProcess, this);
-    nextButton = game.add.sprite(game.width * 0.9, game.height * 0.9, 'Next');
+    nextButton = game.add.sprite(game.width * 0.9, game.height * 0.95, 'Next');
     nextButton.anchor.setTo(0.5, 0.5);
-    nextButton.width = nextButton.height = minDimension * 0.25;
+    nextButton.width = nextButton.height = minDimension * 0.15;
     nextButton.inputEnabled = true;
     nextButton.events.onInputDown.add(nextProcess, this);
-    previousButton = game.add.sprite(game.width * 0.1, game.height * 0.9, 'Previous');
+    previousButton = game.add.sprite(game.width * 0.1, game.height * 0.95, 'Previous');
     previousButton.anchor.setTo(0.5, 0.5);
-    previousButton.width = previousButton.height = minDimension * 0.25;
+    previousButton.width = previousButton.height = minDimension * 0.15;
     previousButton.inputEnabled = true;
     previousButton.events.onInputDown.add(previousProcess, this);
+    levelText = game.add.text(
+      game.width * 0.5,
+      game.height * 0.05,
+      levelIndex + 1,
+      {
+        font: "6em Futura",
+        fill: "#000000",
+        align: "center"
+      }
+    );
+    levelText.anchor.set(0.5);
     winSound = game.add.audio("Win");
     goalSound = game.add.audio("Goal");
     zapOnSound = game.add.audio("ZapOn");
@@ -73,31 +84,39 @@ function moveNorth() {
       if (!replicaList[i].finished) {
         var row = replicaList[i].row;
         var col = replicaList[i].col;
-        if (row - 1 >= 0) {
-          if (floorList[levelIndex][row][col].includes('N') && floorList[levelIndex][row-1][col].includes('S')) {
+        var scale = 1;
+        for (r = row - 1; r >= 0; r--) {
+          if (floorList[levelIndex][r][col].includes('P') && floorList[levelIndex][r][col].includes('N') && floorList[levelIndex][r][col].includes('S')) {
+            scale++;
+          } else {
+            break;
+          }
+        }
+        if (row - scale >= 0) {
+          if (floorList[levelIndex][row][col].includes('N') && floorList[levelIndex][row-scale][col].includes('S')) {
             var occupied = false;
             for (j = replicaList.length - 1; j >= 0; j--) {
               if (replicaList[j] !== replicaList[i]) {
-                if ((replicaList[j].row === row - 1) && (replicaList[j].col === col)) {
+                if ((replicaList[j].row === row - scale) && (replicaList[j].col === col)) {
                   occupied = true;
                   break;
                 }
               }
             }
             for (j = lockList.length - 1; j >= 0; j--) {
-              if ((lockList[j].row === row - 1) && (lockList[j].col === col)) {
+              if ((lockList[j].row === row - scale) && (lockList[j].col === col)) {
                 occupied = true;
                 break;
               }
             }
             for (j = blockedList.length - 1; j >= 0; j--) {
-              if ((blockedList[j].row === row - 1) && (blockedList[j].col === col)) {
+              if ((blockedList[j].row === row - scale) && (blockedList[j].col === col)) {
                 occupied = true;
                 break;
               }
             }
             if (!occupied) {
-              replicaList[i].move('N');
+              replicaList[i].move('N', scale);
               if (replicaList[i]) {
                 for (j = zapOnList.length - 1; j >= 0; j--) {
                   if ((zapOnList[j].row === replicaList[i].row) && (zapOnList[j].col === replicaList[i].col)) {
@@ -114,7 +133,7 @@ function moveNorth() {
               if (replicaList[i]) {
                 for (j = portalList.length - 1; j >= 0; j--) {
                   if ((portalList[j].row === replicaList[i].row) && (portalList[j].col === replicaList[i].col)) {
-                    teleport(replicaList, portalList, i, j);
+                    teleport(replicaList[i], portalList, j);
                     setTimeout(function() {
                       portalSound.play();
                     }, 200);
@@ -195,31 +214,39 @@ function moveSouth() {
       if (!replicaList[i].finished) {
         var row = replicaList[i].row;
         var col = replicaList[i].col;
-        if (row + 1 < floorList[levelIndex].length) {
-          if (floorList[levelIndex][row][col].includes('S') && floorList[levelIndex][row+1][col].includes('N')) {
+        var scale = 1;
+        for (r = row + 1; r < floorList[levelIndex].length; r++) {
+          if (floorList[levelIndex][r][col].includes('P') && floorList[levelIndex][r][col].includes('S') && floorList[levelIndex][r][col].includes('N')) {
+            scale++;
+          } else {
+            break;
+          }
+        }
+        if (row + scale < floorList[levelIndex].length) {
+          if (floorList[levelIndex][row][col].includes('S') && floorList[levelIndex][row+scale][col].includes('N')) {
             var occupied = false;
             for (j = replicaList.length - 1; j >= 0; j--) {
               if (replicaList[j] !== replicaList[i]) {
-                if ((replicaList[j].row === row + 1) && (replicaList[j].col === col)) {
+                if ((replicaList[j].row === row + scale) && (replicaList[j].col === col)) {
                   occupied = true;
                   break;
                 }
               }
             }
             for (j = lockList.length - 1; j >= 0; j--) {
-              if ((lockList[j].row === row + 1) && (lockList[j].col === col)) {
+              if ((lockList[j].row === row + scale) && (lockList[j].col === col)) {
                 occupied = true;
                 break;
               }
             }
             for (j = blockedList.length - 1; j >= 0; j--) {
-              if ((blockedList[j].row === row + 1) && (blockedList[j].col === col)) {
+              if ((blockedList[j].row === row + scale) && (blockedList[j].col === col)) {
                 occupied = true;
                 break;
               }
             }
             if (!occupied) {
-              replicaList[i].move('S');
+              replicaList[i].move('S', scale);
               if (replicaList[i]) {
                 for (j = zapOnList.length - 1; j >= 0; j--) {
                   if ((zapOnList[j].row === replicaList[i].row) && (zapOnList[j].col === replicaList[i].col)) {
@@ -236,7 +263,7 @@ function moveSouth() {
               if (replicaList[i]) {
                 for (j = portalList.length - 1; j >= 0; j--) {
                   if ((portalList[j].row === replicaList[i].row) && (portalList[j].col === replicaList[i].col)) {
-                    teleport(replicaList, portalList, i, j);
+                    teleport(replicaList[i], portalList, j);
                     setTimeout(function() {
                       portalSound.play();
                     }, 200);
@@ -317,31 +344,39 @@ function moveWest() {
       if (!replicaList[i].finished) {
         var row = replicaList[i].row;
         var col = replicaList[i].col;
-        if (col - 1 >= 0) {
-          if (floorList[levelIndex][row][col].includes('W') && floorList[levelIndex][row][col-1].includes('E')) {
+        var scale = 1;
+        for (c = col - 1; c >= 0; c--) {
+          if (floorList[levelIndex][row][c].includes('P') && floorList[levelIndex][row][c].includes('W') && floorList[levelIndex][row][c].includes('E')) {
+            scale++;
+          } else {
+            break;
+          }
+        }
+        if (col - scale >= 0) {
+          if (floorList[levelIndex][row][col].includes('W') && floorList[levelIndex][row][col-scale].includes('E')) {
             var occupied = false;
             for (j = replicaList.length - 1; j >= 0; j--) {
               if (replicaList[j] !== replicaList[i]) {
-                if ((replicaList[j].row === row) && (replicaList[j].col === col - 1)) {
+                if ((replicaList[j].row === row) && (replicaList[j].col === col - scale)) {
                   occupied = true;
                   break;
                 }
               }
             }
             for (j = lockList.length - 1; j >= 0; j--) {
-              if ((lockList[j].row === row) && (lockList[j].col === col - 1)) {
+              if ((lockList[j].row === row) && (lockList[j].col === col - scale)) {
                 occupied = true;
                 break;
               }
             }
             for (j = blockedList.length - 1; j >= 0; j--) {
-              if ((blockedList[j].row === row) && (blockedList[j].col === col - 1)) {
+              if ((blockedList[j].row === row) && (blockedList[j].col === col - scale)) {
                 occupied = true;
                 break;
               }
             }
             if (!occupied) {
-              replicaList[i].move('W');
+              replicaList[i].move('W', scale);
               if (replicaList[i]) {
                 for (j = zapOnList.length - 1; j >= 0; j--) {
                   if ((zapOnList[j].row === replicaList[i].row) && (zapOnList[j].col === replicaList[i].col)) {
@@ -358,7 +393,7 @@ function moveWest() {
               if (replicaList[i]) {
                 for (j = portalList.length - 1; j >= 0; j--) {
                   if ((portalList[j].row === replicaList[i].row) && (portalList[j].col === replicaList[i].col)) {
-                    teleport(replicaList, portalList, i, j);
+                    teleport(replicaList[i], portalList, j);
                     setTimeout(function() {
                       portalSound.play();
                     }, 200);
@@ -439,31 +474,39 @@ function moveEast() {
       if (!replicaList[i].finished) {
         var row = replicaList[i].row;
         var col = replicaList[i].col;
-        if (col + 1 < floorList[levelIndex][0].length) {
-          if (floorList[levelIndex][row][col].includes('E') && floorList[levelIndex][row][col+1].includes('W')) {
+        var scale = 1;
+        for (c = col + 1; c < floorList[levelIndex][0].length; c++) {
+          if (floorList[levelIndex][row][c].includes('P') && floorList[levelIndex][row][c].includes('E') && floorList[levelIndex][row][c].includes('W')) {
+            scale++;
+          } else {
+            break;
+          }
+        }
+        if (col + scale < floorList[levelIndex][0].length) {
+          if (floorList[levelIndex][row][col].includes('E') && floorList[levelIndex][row][col+scale].includes('W')) {
             var occupied = false;
             for (j = replicaList.length - 1; j >= 0; j--) {
               if (replicaList[j] !== replicaList[i]) {
-                if ((replicaList[j].row === row) && (replicaList[j].col === col + 1)) {
+                if ((replicaList[j].row === row) && (replicaList[j].col === col + scale)) {
                   occupied = true;
                   break;
                 }
               }
             }
             for (j = lockList.length - 1; j >= 0; j--) {
-              if ((lockList[j].row === row) && (lockList[j].col === col + 1)) {
+              if ((lockList[j].row === row) && (lockList[j].col === col + scale)) {
                 occupied = true;
                 break;
               }
             }
             for (j = blockedList.length - 1; j >= 0; j--) {
-              if ((blockedList[j].row === row) && (blockedList[j].col === col + 1)) {
+              if ((blockedList[j].row === row) && (blockedList[j].col === col + scale)) {
                 occupied = true;
                 break;
               }
             }
             if (!occupied) {
-              replicaList[i].move('E');
+              replicaList[i].move('E', scale);
               if (replicaList[i]) {
                 for (j = zapOnList.length - 1; j >= 0; j--) {
                   if ((zapOnList[j].row === replicaList[i].row) && (zapOnList[j].col === replicaList[i].col)) {
@@ -480,7 +523,7 @@ function moveEast() {
               if (replicaList[i]) {
                 for (j = portalList.length - 1; j >= 0; j--) {
                   if ((portalList[j].row === replicaList[i].row) && (portalList[j].col === replicaList[i].col)) {
-                    teleport(replicaList, portalList, i, j);
+                    teleport(replicaList[i], portalList, j);
                     setTimeout(function() {
                       portalSound.play();
                     }, 200);
@@ -551,15 +594,15 @@ function moveEast() {
   }
 }
 
-function teleport(rList, pList, m, n) {
+function teleport(r, pList, n) {
   setTimeout(function() {
     // Teleport from one portal to other portal
-    rList[m].row = pList[(n+1)%2].row;
-    rList[m].col = pList[(n+1)%2].col;
-    rList[m].x = pList[(n+1)%2].x;
-    rList[m].y = pList[(n+1)%2].y;
-    rList[m].sprite.x = pList[(n+1)%2].sprite.x;
-    rList[m].sprite.y = pList[(n+1)%2].sprite.y;
+    r.row = pList[(n+1)%2].row;
+    r.col = pList[(n+1)%2].col;
+    r.x = pList[(n+1)%2].x;
+    r.y = pList[(n+1)%2].y;
+    r.sprite.x = pList[(n+1)%2].sprite.x;
+    r.sprite.y = pList[(n+1)%2].sprite.y;
     game.add.tween(pList[0].sprite).to({width: pList[0].width * 1.5, height: pList[0].height * 1.5}, 1000, Phaser.Easing.Exponential.Out, true);
     game.add.tween(pList[1].sprite).to({width: pList[1].width * 1.5, height: pList[1].height * 1.5}, 1000, Phaser.Easing.Exponential.Out, true);
     game.add.tween(pList[0].sprite).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true);
