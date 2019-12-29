@@ -3,13 +3,14 @@ var playState = {
   // Automatically called
   preload: function() {
     // Set up input
-    ready = true;
+    ready = false;
     loaded = false;
     upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
     downKey = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
     leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
     rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
     spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
     if (landscape) {
       upKey.onDown.add(moveNorth, this);
       downKey.onDown.add(moveSouth, this);
@@ -22,6 +23,7 @@ var playState = {
       rightKey.onDown.add(moveSouth, this);
     }
     spaceKey.onDown.add(spaceProcess, this);
+    enterKey.onDown.add(spaceProcess, this);
     startX = 0;
     startY = 0;
     endX = 0;
@@ -67,6 +69,7 @@ var playState = {
     portalSound = game.add.audio("Portal");
     unlockSound = game.add.audio("Unlock");
     unlockSound.volume = 0.6;
+    setTimeout(setReady, 500);
     setTimeout(setLoaded, 500);
   },
   // Called every frame
@@ -623,9 +626,10 @@ function resetProcess() {
   if (loaded) {
     if (goalList.length <= 0) {
       winSound.play();
-      loaded = false;
       completionList[levelIndex] = true;
     }
+    loaded = false;
+    ready = false;
     playState.camera.fade('#646464', 500, true);
     setTimeout(function() {
       setReady();
@@ -639,6 +643,7 @@ function nextProcess() {
     if ((goalList.length <= 0) || completionList[levelIndex]) {
       winSound.play();
       loaded = false;
+      ready = false;
       playState.camera.fade('#646464', 500, true);
       setTimeout(function() {
         completionList[levelIndex] = true;
@@ -653,9 +658,10 @@ function nextProcess() {
 
 function previousProcess() {
   if (loaded) {
-    if (levelIndex > 0) {
+    if (levelIndex > 0 || (levelIndex === 0 && completionList[completionList.length - 1])) {
       winSound.play();
       loaded = false;
+      ready = false;
       playState.camera.fade('#646464', 500, true);
       setTimeout(function() {
         setReady();

@@ -17,5 +17,5 @@ function setStartLevel() {
     completionList.fill(false);
   }
   var foundIndex = completionList.findIndex(l => !l);
-  levelIndex = (foundIndex !== -1) ? foundIndex : 1;
+  levelIndex = (foundIndex !== -1) ? foundIndex : 0;
 }
