@@ -49,7 +49,6 @@ var loadState = {
 
     // Other setup
     game.stage.smoothed = true;
-    console.log(game.device);
     if (game.device.android) game.time.slowMotion = 0.5;
   },
 
